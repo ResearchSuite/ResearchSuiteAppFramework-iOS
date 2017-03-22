@@ -1,0 +1,11 @@
+use_frameworks!
+
+target 'ResearchSuiteAppFramework_Example' do
+  pod 'ResearchSuiteAppFramework', :path => '../'
+
+  target 'ResearchSuiteAppFramework_Tests' do
+    inherit! :search_paths
+
+    
+  end
+end
