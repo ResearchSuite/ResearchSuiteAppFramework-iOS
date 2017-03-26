@@ -1,0 +1,6 @@
+framework module Pods_ResearchSuiteAppFramework_Tests {
+  umbrella header "Pods-ResearchSuiteAppFramework_Tests-umbrella.h"
+
+  export *
+  module * { export * }
+}

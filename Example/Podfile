@@ -1,11 +1,16 @@
 use_frameworks!
 
 target 'ResearchSuiteAppFramework_Example' do
-  pod 'ResearchSuiteAppFramework', :path => '../'
+  pod 'ResearchSuiteAppFramework/Lab', :path => '../'
+
+  pod "sdlrkx"
+  pod "OhmageOMHSDK", "0.1.0"
+  pod "OhmageOMHSDK/RKSupport", "0.1.0"
+  pod "OhmageOMHSDK/RSRPSupport", "0.1.0"
 
   target 'ResearchSuiteAppFramework_Tests' do
     inherit! :search_paths
 
-    
+
   end
 end
