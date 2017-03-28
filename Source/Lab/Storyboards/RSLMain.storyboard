@@ -61,17 +61,17 @@
         <!--Session Activities-->
         <scene sceneID="FeN-ty-Nh0">
             <objects>
-                <tableViewController storyboardIdentifier="activities" title="Session Activities" useStoryboardIdentifierAsRestorationIdentifier="YES" id="gPR-u4-lbc" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="activities" title="Session Activities" useStoryboardIdentifierAsRestorationIdentifier="YES" id="gPR-u4-lbc" customClass="RSAFActivityTableViewController" customModule="ResearchSuiteAppFramework" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="60" sectionHeaderHeight="28" sectionFooterHeight="28" id="jGG-6A-UnP">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ActivityCell" id="DdX-pR-avI" customClass="CTFActivityTableViewCell" customModule="LabResources" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="ActivityCell" id="DdX-pR-avI" customClass="RSAFActivityTableViewCell" customModule="ResearchSuiteAppFramework">
                                 <rect key="frame" x="0.0" y="28" width="375" height="60"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="DdX-pR-avI" id="0ka-uN-KS9">
-                                    <rect key="frame" x="0.0" y="0.0" width="375" height="59"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="33V-se-Tp6">
@@ -120,11 +120,11 @@
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="checkmarkImageView" destination="cEL-gi-UjO" id="kZg-O6-NUW"/>
-                                    <outlet property="subtitleLabel" destination="tAn-3v-1W2" id="MVb-5U-zuh"/>
-                                    <outlet property="timeLabel" destination="IHl-Kz-dm4" id="zDV-Xd-H0t"/>
-                                    <outlet property="titleLabel" destination="skj-DZ-Nrs" id="aqP-of-hhN"/>
-                                    <outlet property="uncheckedView" destination="33V-se-Tp6" id="Qew-yt-A8g"/>
+                                    <outlet property="checkmarkImageView" destination="cEL-gi-UjO" id="iPf-AR-4ai"/>
+                                    <outlet property="subtitleLabel" destination="tAn-3v-1W2" id="v8b-c5-tvJ"/>
+                                    <outlet property="timeLabel" destination="IHl-Kz-dm4" id="Hy3-GI-i8T"/>
+                                    <outlet property="titleLabel" destination="skj-DZ-Nrs" id="U5B-Dv-bQk"/>
+                                    <outlet property="uncheckedView" destination="33V-se-Tp6" id="Dgd-qo-o7g"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

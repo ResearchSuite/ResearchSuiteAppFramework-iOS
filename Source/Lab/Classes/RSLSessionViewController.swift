@@ -29,8 +29,18 @@ open class RSLSessionViewController: UIViewController, StoreSubscriber {
         
         self.sessionId = RSAFObservableValue(initialValue: nil, observationClosure: { (sessionId) in
             if sessionId != nil,
-                let activitiesTVC = self.instantiateActivitiesViewController() {
+                let activitiesTVC = self.instantiateActivitiesViewController() as? RSAFActivityTableViewController,
+                let store = self.store,
+                let delegate = UIApplication.shared.delegate as? RSLApplicationDelegate,
+                let schedule = delegate.participantSchedule() {
+                activitiesTVC.store = self.store
+                activitiesTVC.schedule = schedule
                 self.navigationController?.pushViewController(activitiesTVC, animated: true)
+                
+                activitiesTVC.navigationItem.hidesBackButton = true
+                let endSessionButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(self.endSession))
+                
+                activitiesTVC.navigationItem.setRightBarButton(endSessionButton, animated: true)
             }
         })
         
@@ -78,5 +88,37 @@ open class RSLSessionViewController: UIViewController, StoreSubscriber {
         }()
         
         self.sessionId?.set(value: sessionId)
+    }
+    
+    func endSession() {
+        
+        let title = "End Session"
+        let message = "Are you sure you want to end the session?"
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+        alert.addAction(cancelAction)
+        
+        weak var nav: UINavigationController? = self.navigationController
+        
+        let endSessionAction = UIAlertAction(title: "End Session", style: .destructive, handler: { _ in
+            if let store = self.store {
+                let asyncActionCreator: RSAFActionCreators.AsyncActionCreator<RSAFCombinedState> = { (state, store, actionCreatorCallback) in
+                    let endSessionAction = RSLLabActionCreators.endCurrentSession()
+                    actionCreatorCallback( { (store, state) in
+                        return endSessionAction
+                    })
+                    
+                }
+                
+                store.dispatch(asyncActionCreator, callback: { (state) in
+                    nav?.popViewController(animated: true)
+                })
+            }
+        })
+        alert.addAction(endSessionAction)
+        
+        self.present(alert, animated: true, completion: nil)
+        
     }
 }

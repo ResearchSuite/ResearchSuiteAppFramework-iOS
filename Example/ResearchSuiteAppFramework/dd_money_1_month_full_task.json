@@ -1,0 +1,43 @@
+{
+  "type"      : "elementList",
+  "identifier": "dd_money_1_month_full_intro",
+  "elements"   : [
+
+    {
+       "identifier"   : "introduction_1_dd_1_m",
+       "type"         : "instruction",
+       "title"        : "Welcome to the Now and Later Game",
+       "text"         : ""
+     },
+     {
+       "identifier"   : "introduction_2_dd_1_m",
+       "type"         : "instruction",
+       "title"        : "",
+       "text"         : "In this game you will choose between receiving different amounts of money either RIGHT NOW, or in one month."
+     },
+     {
+       "identifier"   : "introduction_3_dd_1_m",
+       "type"         : "instruction",
+       "title"        : "",
+       "text"         : "While you will not receive the actual money, please make your decisions as if you were really going to receive the money. There are no correct or incorrect choices."
+     },
+      {
+        "type"        : "CTFDelayedDiscountingActiveStep",
+        "identifier"       : "dd_money_1_month",
+        "parameters": {
+          "maxAmount": 100.0,
+          "numQuestions": 6,
+          "nowDescription": "Now",
+          "laterDescription": "In 1 Month",
+          "formatString":"$%.02f",
+          "prompt": "Please choose which amounts of money you would like either RIGHT NOW or in ONE MONTH."
+        }
+      },
+      {
+        "identifier"   : "results_dd_1_m",
+        "type"         : "instruction",
+        "title"        : "Thank you for completing the task!",
+        "text"         : ""
+      }
+  ]
+}

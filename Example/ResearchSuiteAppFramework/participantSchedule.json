@@ -11,8 +11,8 @@
       "guid": "go-no-go-stable-1",
       "activity": {
         "type": "elementFile",
-        "identifier": "go_no_go_stable_stimulus_short_task",
-        "elementFileName": "go_no_go_stable_stimulus_short_task"
+        "identifier": "go_no_go_stable_stimulus_full_task",
+        "elementFileName": "go_no_go_stable_stimulus_full_task"
       },
       "resultTransforms": [
         {
@@ -30,8 +30,8 @@
       "guid": "go-no-go-variable-1",
       "activity": {
         "type": "elementFile",
-        "identifier": "go_no_go_variable_stimulus_short_task",
-        "elementFileName": "go_no_go_variable_stimulus_short_task"
+        "identifier": "go_no_go_variable_stimulus_full_task",
+        "elementFileName": "go_no_go_variable_stimulus_full_task"
       },
       "resultTransforms": [
         {
@@ -50,8 +50,8 @@
       "guid": "bart.25-1",
       "activity": {
         "type": "elementFile",
-        "identifier": "bart_25_cents_short_task",
-        "elementFileName": "bart_25_cents_short_task"
+        "identifier": "bart_25_cents_full_task",
+        "elementFileName": "bart_25_cents_full_task"
       },
       "resultTransforms": [
         {
@@ -69,8 +69,8 @@
       "guid": "bart250-1",
       "activity": {
         "type": "elementFile",
-        "identifier": "bart_250_dollars_short_task",
-        "elementFileName": "bart_250_dollars_short_task"
+        "identifier": "bart_250_dollars_full_task",
+        "elementFileName": "bart_250_dollars_full_task"
       },
       "resultTransforms": [
         {
@@ -90,8 +90,8 @@
       "guid": "DD_Money_1Month-1",
       "activity": {
         "type": "elementFile",
-        "identifier": "dd_money_1_month_short_task",
-        "elementFileName": "dd_money_1_month_short_task"
+        "identifier": "dd_money_1_month_full_task",
+        "elementFileName": "dd_money_1_month_full_task"
       },
       "resultTransforms": [
         {
@@ -109,8 +109,8 @@
       "guid": "DD_Money_6Month-1",
       "activity": {
         "type": "elementFile",
-        "identifier": "dd_money_6_month_short_task",
-        "elementFileName": "dd_money_6_month_short_task"
+        "identifier": "dd_money_6_month_full_task",
+        "elementFileName": "dd_money_6_month_full_task"
       },
       "resultTransforms": [
         {
@@ -128,8 +128,8 @@
       "guid": "DD_Time_1Month-1",
       "activity": {
         "type": "elementFile",
-        "identifier": "dd_time_1_year_short_task",
-        "elementFileName": "dd_time_1_year_short_task"
+        "identifier": "dd_time_1_year_full_task",
+        "elementFileName": "dd_time_1_year_full_task"
       },
       "resultTransforms": [
         {
@@ -147,8 +147,8 @@
       "guid": "DD_Time_6Month-1",
       "activity": {
         "type": "elementFile",
-        "identifier": "dd_time_6_month_short_task",
-        "elementFileName": "dd_time_6_month_short_task"
+        "identifier": "dd_time_6_month_full_task",
+        "elementFileName": "dd_time_6_month_full_task"
       },
       "resultTransforms": [
         {

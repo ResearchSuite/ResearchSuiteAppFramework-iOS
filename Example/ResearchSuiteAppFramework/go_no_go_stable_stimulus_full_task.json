@@ -1,0 +1,59 @@
+{
+  "type"      : "elementList",
+  "identifier": "go_no_go_stable_stimulus_full_intro",
+  "elements"   : [
+    {
+      "identifier"   : "introduction_1_gng_s",
+      "type"         : "instruction",
+      "title"        : "Welcome to the Square Task",
+      "text"         : "This game measures how quickly you can make a simple decision, and then either react or withhold your response."
+    },
+    {
+      "identifier"   : "introduction_2_gng_s",
+      "type"         : "instruction",
+      "title"        : "",
+      "text"         : "You will first be presented with a rectangle."
+    },
+    {
+      "identifier"   : "introduction_3_gng_s",
+      "type"         : "instruction",
+      "title"        : "",
+      "text"         : "If the rectangle turns GREEN, tap the screen as quickly as possible."
+    },
+     {
+      "identifier"   : "introduction_4_gng_s",
+      "type"         : "instruction",
+      "title"        : "",
+      "text"         : "If the rectangle turns BLUE, do not tap."
+    },
+    {
+      "identifier"   : "introduction_5_gng_s",
+      "type"         : "instruction",
+      "title"        : "",
+      "text"         : "Between each rectangle you will see a plus (+) sign."
+    },
+    {
+      "type"        : "CTFGoNoGoActiveStep",
+      "identifier"       : "go_no_go_stable_stimulus_active_task",
+      "parameters": {
+        "numberOfTrials": 75,
+        "waitTime": 0.25,
+        "crossTime": 0.25,
+        "blankTime": 0.25,
+        "cueTimes": [
+          0.5
+        ],
+        "fillTime": 0.75,
+        "goCueProbability": 0.5,
+        "goCueTargetProbability": 0.7,
+        "noGoCueTargetProbability": 0.7
+      }
+    },
+    {
+      "identifier"   : "results_gng_s",
+      "type"         : "instruction",
+      "title"        : "Thanks!",
+      "text"         : ""
+    }
+  ]
+}

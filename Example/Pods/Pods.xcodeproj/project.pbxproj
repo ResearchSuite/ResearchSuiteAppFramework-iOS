@@ -768,6 +768,9 @@
 		E1D60F250651AF637911A3FE478193EA /* ORKVisualConsentStepViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 52492097B8C489F75EB4BE82C316E2C8 /* ORKVisualConsentStepViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E2026D7B1C240B3319FA55647CC2867F /* RKXSingleImageClassificationSurveyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8970A6A6E0B9FB6B81092B32FCCD3BB /* RKXSingleImageClassificationSurveyViewController.swift */; };
 		E27748E28A23788A57ECBFA91CAE2ABB /* ORKTimedWalkStepViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50937D2DA3BC8939C4D8D06AF02401FC /* ORKTimedWalkStepViewController.m */; };
+		E2FB72F91E8A1773008C9A50 /* RSAFActivityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FB72F81E8A1773008C9A50 /* RSAFActivityTableViewCell.swift */; };
+		E2FB72FD1E8A1890008C9A50 /* RSAFActivityTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FB72FC1E8A1890008C9A50 /* RSAFActivityTableViewController.swift */; };
+		E2FB73141E8A2F58008C9A50 /* RSLSessionStateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FB73131E8A2F58008C9A50 /* RSLSessionStateManager.swift */; };
 		E306642B757F868093797E40BC42FE31 /* ORKImageCaptureStep.m in Sources */ = {isa = PBXBuildFile; fileRef = C226E0483C8D7651F4FF5943BE6D7AF5 /* ORKImageCaptureStep.m */; };
 		E32D18663E4FC13D7C29434EE2AF5BFB /* ORKPSATStep.m in Sources */ = {isa = PBXBuildFile; fileRef = 0BABB1BFF3CFDFE774D79ACDBDE0A400 /* ORKPSATStep.m */; };
 		E3CB168BA0022BC8F188EA2DC046168A /* Gloss.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F17B32772F53A343D8CAC00468DFF6E4 /* Gloss.framework */; };
@@ -1903,6 +1906,9 @@
 		E21CCD3E72C487A63311409216828735 /* Store.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Store.swift; path = ReSwift/CoreTypes/Store.swift; sourceTree = "<group>"; };
 		E26CB21821CF9F6275F57851AF08C574 /* CTFDelayDiscountingResult.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CTFDelayDiscountingResult.swift; path = source/Behavioral/Core/Classes/DelayDiscounting/CTFDelayDiscountingResult.swift; sourceTree = "<group>"; };
 		E2C1C610F25FC442E9211A71C5B4989B /* ORKObserver.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ORKObserver.h; path = ResearchKit/Common/ORKObserver.h; sourceTree = "<group>"; };
+		E2FB72F81E8A1773008C9A50 /* RSAFActivityTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSAFActivityTableViewCell.swift; sourceTree = "<group>"; };
+		E2FB72FC1E8A1890008C9A50 /* RSAFActivityTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSAFActivityTableViewController.swift; sourceTree = "<group>"; };
+		E2FB73131E8A2F58008C9A50 /* RSLSessionStateManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSLSessionStateManager.swift; sourceTree = "<group>"; };
 		E37AE0CD2A5917F6B42F088EEE65C5D1 /* ResearchSuiteAppFramework.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ResearchSuiteAppFramework.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E47A75EC74015F4B436CEA10547527C8 /* RSLLabState.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; path = RSLLabState.swift; sourceTree = "<group>"; };
 		E49E8D829197C57008185F55A37789F5 /* RKXSingleImageClassificationSurveyViewController.xib */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = file.xib; name = RKXSingleImageClassificationSurveyViewController.xib; path = source/VSR/Core/Classes/viewControllers/RKXSingleImageClassificationSurveyViewController.xib; sourceTree = "<group>"; };
@@ -2481,6 +2487,7 @@
 			isa = PBXGroup;
 			children = (
 				6B951DDD382BB73036E5AC0982CA01CC /* RSLLabPersistentStoreSubscriber.swift */,
+				E2FB73131E8A2F58008C9A50 /* RSLSessionStateManager.swift */,
 				9E7E6DC2A2D58F6C34BC0E4F59BDFBC3 /* RSLApplicationDelegate.swift */,
 				6F8854D49CC09E208C55906FD3DC4C52 /* RSLLabActionCreators.swift */,
 				0D7A757C9A9AB8F79E8B2090A3DC4D86 /* RSLLabActions.swift */,
@@ -2778,6 +2785,8 @@
 				2470EFBB8501C169CCEDD7A12E7564E4 /* RSAFPersistedValueMap.swift */,
 				FB8429C112E62EF40AED68FD16F0C744 /* RSAFPersistentStorageSubscriber.swift */,
 				CED44C04E8FAC3E89F2E34B5EA1323EA /* RSAFReducer.swift */,
+				E2FB72F81E8A1773008C9A50 /* RSAFActivityTableViewCell.swift */,
+				E2FB72FC1E8A1890008C9A50 /* RSAFActivityTableViewController.swift */,
 				1788D02B09C37A03F26DA6BEC5CA3A34 /* RSAFReduxManager.swift */,
 				89A8C86E20FA31676E53C9623BC1D9A5 /* RSAFResultsProcessorManager.swift */,
 				6F7E570F8727442DCE5F61615A5E524E /* RSAFRootNavigationControllerViewController.swift */,
@@ -4919,6 +4928,7 @@
 				8F6DF930392579855D2FF8D9E76B6742 /* RSAFBaseReducer.swift in Sources */,
 				08065851AA57928306486FF56CABB8BC /* RSAFBaseState.swift in Sources */,
 				4C34FF25407FE364358D081264E7BF00 /* RSAFCombinedPersistentStoreSubscriber.swift in Sources */,
+				E2FB72F91E8A1773008C9A50 /* RSAFActivityTableViewCell.swift in Sources */,
 				22E61502D1D8E46950849D195069F639 /* RSAFCombinedReducer.swift in Sources */,
 				B36D2F73C1FE7AA2FD52E067B9041FCB /* RSAFCombinedState.swift in Sources */,
 				BD20CCAF89B6589AFAF67E0EBDCEFFB3 /* RSAFCorePersistentStoreSubscriber.swift in Sources */,
@@ -4932,6 +4942,7 @@
 				3887A419365A79A6E0D030A85AF50B7D /* RSAFObservableValue.swift in Sources */,
 				27A748DE4AA45634B8A0C591FAC4797E /* RSAFPersistedValue.swift in Sources */,
 				04295E445A5CCBF6F3B722D7CDC7D822 /* RSAFPersistedValueMap.swift in Sources */,
+				E2FB73141E8A2F58008C9A50 /* RSLSessionStateManager.swift in Sources */,
 				E93D5E1FDD6A4D199C84BA31F51DB0B4 /* RSAFPersistentStorageSubscriber.swift in Sources */,
 				1FCB2D38E3ABAEB4D5680A1690F7A1EC /* RSAFReducer.swift in Sources */,
 				3124066F20394FB307295C212B0E4896 /* RSAFReduxManager.swift in Sources */,
@@ -4939,6 +4950,7 @@
 				E9A5B73050E34413F0285DFEE94208AE /* RSAFRootNavigationControllerViewController.swift in Sources */,
 				01CB7D748915B286D418A3857DDD1543 /* RSAFRootViewController.swift in Sources */,
 				3EAE6C3D1E46F18944632D0817C260A2 /* RSAFRootViewControllerProtocol.swift in Sources */,
+				E2FB72FD1E8A1890008C9A50 /* RSAFActivityTableViewController.swift in Sources */,
 				03D55C3B1416B115CF6BF8F1EE0F33DD /* RSAFSchedule.swift in Sources */,
 				63CFE1EC571FD5BC7CA380D5A03C2E85 /* RSAFScheduleItem.swift in Sources */,
 				3A267EBF69980D707DC7669C5D8C1D77 /* RSAFSecureStateManager.swift in Sources */,

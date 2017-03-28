@@ -10,12 +10,16 @@ import UIKit
 import ResearchSuiteAppFramework
 import ResearchSuiteTaskBuilder
 import OhmageOMHSDK
+import sdlrkx
 
 open class RSAFAppTaskBuilderManager: RSAFTaskBuilderManager {
     
     open override class var stepGeneratorServices: [RSTBStepGenerator] {
         return [
-            CTFOhmageLoginStepGenerator()
+            CTFOhmageLoginStepGenerator(),
+            CTFBARTStepGenerator(),
+            CTFDelayDiscountingStepGenerator(),
+            CTFGoNoGoStepGenerator()
         ] + super.stepGeneratorServices
     }
     

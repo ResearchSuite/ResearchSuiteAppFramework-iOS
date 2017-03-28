@@ -26,8 +26,23 @@ open class RSLLabReducer: RSAFBaseReducer {
             case let demographicsCompletedAction as MarkResearcherDemographicsCompleted:
                 return RSLLabState.newState(fromState: state, researcherDemographicsCompleted: demographicsCompletedAction.completed)
                 
-            case let setSessionIdAction as SetSessionId:
-                return RSLLabState.newState(fromState: state, sessionId: setSessionIdAction.sessionId)
+            case let startSessionAction as StartSession:
+                return RSLLabState.newState(
+                    fromState: state,
+                    sessionId: startSessionAction.sessionId,
+                    sessionStorage: [:],
+                    sessionTaskBuilder: startSessionAction.taskBuilderManager,
+                    sessionResultsProcessor: startSessionAction.resultsProcessorManager
+                )
+                
+            case let endSessionAction as EndSession:
+                return RSLLabState.newState(
+                    fromState: state,
+                    sessionId: nil as String?,
+                    sessionStorage: [:],
+                    sessionTaskBuilder: nil as RSAFTaskBuilderManager?,
+                    sessionResultsProcessor: nil as RSAFResultsProcessorManager?
+                )
                 
             case let setValueAction as SetValueInSessionStorage:
                 
