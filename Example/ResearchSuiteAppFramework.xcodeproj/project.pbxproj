@@ -25,6 +25,7 @@
 		E264E7FC1E88D1A200582958 /* researcherDemographics.json in Resources */ = {isa = PBXBuildFile; fileRef = E264E7F91E88D1A200582958 /* researcherDemographics.json */; };
 		E264E7FD1E88D1A200582958 /* signIn.json in Resources */ = {isa = PBXBuildFile; fileRef = E264E7FA1E88D1A200582958 /* signIn.json */; };
 		E29BF1321E82D69000157E10 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E29BF1311E82D69000157E10 /* Onboarding.storyboard */; };
+		E2B942FE1E8AAA3E00566A31 /* OhmageExtensibleStateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B942FD1E8AAA3E00566A31 /* OhmageExtensibleStateManager.swift */; };
 		E2FB73091E8A1DD4008C9A50 /* bart_25_cents_full_task.json in Resources */ = {isa = PBXBuildFile; fileRef = E2FB72FF1E8A1DD4008C9A50 /* bart_25_cents_full_task.json */; };
 		E2FB730A1E8A1DD4008C9A50 /* bart_250_dollars_full_task.json in Resources */ = {isa = PBXBuildFile; fileRef = E2FB73001E8A1DD4008C9A50 /* bart_250_dollars_full_task.json */; };
 		E2FB730B1E8A1DD4008C9A50 /* dd_money_1_month_full_task.json in Resources */ = {isa = PBXBuildFile; fileRef = E2FB73011E8A1DD4008C9A50 /* dd_money_1_month_full_task.json */; };
@@ -76,6 +77,7 @@
 		E264E7F91E88D1A200582958 /* researcherDemographics.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = researcherDemographics.json; sourceTree = "<group>"; };
 		E264E7FA1E88D1A200582958 /* signIn.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = signIn.json; sourceTree = "<group>"; };
 		E29BF1311E82D69000157E10 /* Onboarding.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
+		E2B942FD1E8AAA3E00566A31 /* OhmageExtensibleStateManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OhmageExtensibleStateManager.swift; sourceTree = "<group>"; };
 		E2FB72FF1E8A1DD4008C9A50 /* bart_25_cents_full_task.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = bart_25_cents_full_task.json; sourceTree = "<group>"; };
 		E2FB73001E8A1DD4008C9A50 /* bart_250_dollars_full_task.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = bart_250_dollars_full_task.json; sourceTree = "<group>"; };
 		E2FB73011E8A1DD4008C9A50 /* dd_money_1_month_full_task.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = dd_money_1_month_full_task.json; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 			children = (
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				E264E7E81E871A6600582958 /* OhmageCredentialsStore.swift */,
+				E2B942FD1E8AAA3E00566A31 /* OhmageExtensibleStateManager.swift */,
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
 				E264E7EF1E88C3C900582958 /* RSAFAppTaskBuilderManager.swift */,
 				E264E7F31E88C6F500582958 /* config */,
@@ -457,6 +460,7 @@
 			files = (
 				E264E7E91E871A6600582958 /* OhmageCredentialsStore.swift in Sources */,
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
+				E2B942FE1E8AAA3E00566A31 /* OhmageExtensibleStateManager.swift in Sources */,
 				E264E7F01E88C3C900582958 /* RSAFAppTaskBuilderManager.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 			);

@@ -39,20 +39,33 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="imU-dJ-QYC">
-                                <rect key="frame" x="141" y="629" width="92" height="30"/>
+                                <rect key="frame" x="141" y="621" width="92" height="30"/>
                                 <state key="normal" title="Start Session"/>
                                 <connections>
-                                    <action selector="startSession:" destination="4MZ-dS-Jze" eventType="touchUpInside" id="FWa-lt-lrX"/>
+                                    <action selector="startSession:" destination="4MZ-dS-Jze" eventType="touchUpInside" id="Q7e-eW-KLs"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5sm-2B-Fr7">
+                                <rect key="frame" x="157" y="575" width="60" height="30"/>
+                                <state key="normal" title="Sign Out"/>
+                                <connections>
+                                    <action selector="signOut:" destination="4MZ-dS-Jze" eventType="touchUpInside" id="aO2-NV-EQg"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="imU-dJ-QYC" firstAttribute="centerX" secondItem="xk8-6R-ZUS" secondAttribute="centerX" id="FAp-lg-g0S"/>
-                            <constraint firstItem="Eh3-ED-3nP" firstAttribute="top" secondItem="imU-dJ-QYC" secondAttribute="bottom" constant="8" symbolic="YES" id="qGc-bD-iS8"/>
+                            <constraint firstItem="5sm-2B-Fr7" firstAttribute="centerX" secondItem="xk8-6R-ZUS" secondAttribute="centerX" id="N3m-LB-k7R"/>
+                            <constraint firstItem="Eh3-ED-3nP" firstAttribute="top" secondItem="imU-dJ-QYC" secondAttribute="bottom" constant="16" id="qGc-bD-iS8"/>
+                            <constraint firstItem="imU-dJ-QYC" firstAttribute="top" secondItem="5sm-2B-Fr7" secondAttribute="bottom" constant="16" id="sKY-PF-wTX"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="New Session" id="Jr6-Wx-yNY"/>
+                    <connections>
+                        <outlet property="signOutButton" destination="5sm-2B-Fr7" id="s5H-Bf-28G"/>
+                        <outlet property="startSessionButton" destination="imU-dJ-QYC" id="0Uj-7a-sPu"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XAD-Be-YzS" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

@@ -16,7 +16,7 @@ open class RSAFExtensibleStateManager: NSObject, RSTBStateHelper, StoreSubscribe
     
     let store: Store<RSAFCombinedState>
     
-    init(store: Store<RSAFCombinedState>) {
+    public init(store: Store<RSAFCombinedState>) {
         self.store = store
         super.init()
     }

@@ -12,7 +12,11 @@ import ResearchSuiteTaskBuilder
 
 open class RSLSessionViewController: UIViewController, StoreSubscriber {
     
-    var sessionId: RSAFObservableValue<String>?
+    var sessionId: RSAFObservableValue<String>!
+    
+    @IBOutlet weak var startSessionButton: UIButton!
+    
+    @IBOutlet weak var signOutButton: UIButton!
     
     open var store: Store<RSAFCombinedState>? {
         
@@ -64,6 +68,7 @@ open class RSLSessionViewController: UIViewController, StoreSubscriber {
     
     
     @IBAction func startSession(_ sender: Any) {
+        assert(self.sessionId.get() == nil)
         if let delegate = UIApplication.shared.delegate as? RSLApplicationDelegate,
             let item = delegate.startSessionItem(),
             let store = delegate.reduxStore {
@@ -74,6 +79,16 @@ open class RSLSessionViewController: UIViewController, StoreSubscriber {
             store.dispatch(action)
             
         }
+    }
+    
+    @IBAction func signOut(_ sender: Any) {
+        
+        assert(self.sessionId.get() == nil)
+        
+        if let delegate = UIApplication.shared.delegate as? RSLApplicationDelegate  {
+            delegate.signOut()
+        }
+        
     }
     
     open func newState(state: RSAFCombinedState) {
@@ -87,7 +102,11 @@ open class RSLSessionViewController: UIViewController, StoreSubscriber {
             return RSLLabSelectors.getSessionId(labState)
         }()
         
-        self.sessionId?.set(value: sessionId)
+        self.sessionId.set(value: sessionId)
+        
+        self.startSessionButton.isEnabled = sessionId == nil
+        self.signOutButton.isEnabled = sessionId == nil
+        
     }
     
     func endSession() {

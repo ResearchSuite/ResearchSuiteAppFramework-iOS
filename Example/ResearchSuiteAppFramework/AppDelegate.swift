@@ -53,12 +53,12 @@ final class AppDelegate: RSLApplicationDelegate {
         
         let credentialsStore = OhmageCredentialsStore(store: store)
         
-        if OhmageOMHManager.config(baseURL: baseURL,
+        if let ohmageManager = OhmageOMHManager(baseURL: baseURL,
                                    clientID: clientID,
                                    clientSecret: clientSecret,
                                    queueStorageDirectory: "ohmageSDK",
                                    store: credentialsStore) {
-            return OhmageOMHManager.shared
+            return ohmageManager
         }
         else {
             fatalError("Could not initialze OhmageManager")
@@ -97,6 +97,9 @@ final class AppDelegate: RSLApplicationDelegate {
         return self.loadSchedule(filename: "participantSchedule")
     }
     
+    
+    //TODO: Need to figure out how to handle case where the task builder
+    //fails to generate the log in step!
     open override func signInItem() -> RSAFScheduleItem? {
         guard let onboardingSchedule = self.onboardingSchedule,
             let item = onboardingSchedule.itemMap["sign_in"] else {
@@ -214,6 +217,12 @@ final class AppDelegate: RSLApplicationDelegate {
     
     open override func isSignedIn(state: RSAFCombinedState) -> Bool {
         return self.ohmageManager.isSignedIn
+    }
+    
+    open override func createExtensibleStateManager(store: Store<RSAFCombinedState>) -> RSAFExtensibleStateManager {
+        return OhmageExtensibleStateManager(store: store, ohmageManagerClosure: { [weak self] () -> OhmageOMHManager? in
+            self?.ohmageManager
+        })
     }
     
     open override func createTaskBuilderManager(stateHelper: RSTBStateHelper) -> RSAFTaskBuilderManager {

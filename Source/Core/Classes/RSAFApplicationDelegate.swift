@@ -240,6 +240,10 @@ open class RSAFApplicationDelegate: UIResponder, UIApplicationDelegate, ORKPassc
         return RSAFResultsProcessorManager(store: store, backEnd: RSAFFakeBackEnd())
     }
     
+    open func createExtensibleStateManager(store: Store<RSAFCombinedState>) -> RSAFExtensibleStateManager {
+        return RSAFExtensibleStateManager(store: store)
+    }
+    
     open func createTaskBuilderManager(stateHelper: RSTBStateHelper) -> RSAFTaskBuilderManager {
         return RSAFTaskBuilderManager(stateHelper: stateHelper)
     }
@@ -265,6 +269,8 @@ open class RSAFApplicationDelegate: UIResponder, UIApplicationDelegate, ORKPassc
         let store = initializeStore()
         self.subscribeToStore(store: store)
         
+        
+        
     }
     
     open func initializeStore() -> Store<RSAFCombinedState> {
@@ -276,7 +282,7 @@ open class RSAFApplicationDelegate: UIResponder, UIApplicationDelegate, ORKPassc
         
         let storeManager: RSAFReduxManager = RSAFReduxManager(initialState: persistedState, reducer: combinedReducer)
         
-        let extensibleStateHelper = RSAFExtensibleStateManager(store: storeManager.store)
+        let extensibleStateHelper = self.createExtensibleStateManager(store: storeManager.store)
         let taskBuilderManager  = self.createTaskBuilderManager(stateHelper: extensibleStateHelper)
         let resultsProcessorManager = self.createResultsProcessorManager(store: storeManager.store)
         
@@ -312,6 +318,11 @@ open class RSAFApplicationDelegate: UIResponder, UIApplicationDelegate, ORKPassc
     
     open func signOut() {
         self.unsubscribeAndResetStore()
+        
+        if let store = self.reduxStore,
+            let state = store.state as? RSAFCombinedState {
+            self.showViewController(state: state)
+        }
     }
     
     open func loadSchedule(filename: String) -> RSAFSchedule? {

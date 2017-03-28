@@ -768,6 +768,7 @@
 		E1D60F250651AF637911A3FE478193EA /* ORKVisualConsentStepViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = 52492097B8C489F75EB4BE82C316E2C8 /* ORKVisualConsentStepViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		E2026D7B1C240B3319FA55647CC2867F /* RKXSingleImageClassificationSurveyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A8970A6A6E0B9FB6B81092B32FCCD3BB /* RKXSingleImageClassificationSurveyViewController.swift */; };
 		E27748E28A23788A57ECBFA91CAE2ABB /* ORKTimedWalkStepViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 50937D2DA3BC8939C4D8D06AF02401FC /* ORKTimedWalkStepViewController.m */; };
+		E2B942FC1E8AA68D00566A31 /* CTFOhmageSDKInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2B942FB1E8AA68D00566A31 /* CTFOhmageSDKInjector.swift */; };
 		E2FB72F91E8A1773008C9A50 /* RSAFActivityTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FB72F81E8A1773008C9A50 /* RSAFActivityTableViewCell.swift */; };
 		E2FB72FD1E8A1890008C9A50 /* RSAFActivityTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FB72FC1E8A1890008C9A50 /* RSAFActivityTableViewController.swift */; };
 		E2FB73141E8A2F58008C9A50 /* RSLSessionStateManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E2FB73131E8A2F58008C9A50 /* RSLSessionStateManager.swift */; };
@@ -1905,6 +1906,7 @@
 		E1EB6E24BF1244F342B288063C34C5C2 /* ORKSurveyAnswerCellForImageSelection.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ORKSurveyAnswerCellForImageSelection.h; path = ResearchKit/Common/ORKSurveyAnswerCellForImageSelection.h; sourceTree = "<group>"; };
 		E21CCD3E72C487A63311409216828735 /* Store.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = Store.swift; path = ReSwift/CoreTypes/Store.swift; sourceTree = "<group>"; };
 		E26CB21821CF9F6275F57851AF08C574 /* CTFDelayDiscountingResult.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = CTFDelayDiscountingResult.swift; path = source/Behavioral/Core/Classes/DelayDiscounting/CTFDelayDiscountingResult.swift; sourceTree = "<group>"; };
+		E2B942FB1E8AA68D00566A31 /* CTFOhmageSDKInjector.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CTFOhmageSDKInjector.swift; sourceTree = "<group>"; };
 		E2C1C610F25FC442E9211A71C5B4989B /* ORKObserver.h */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.c.h; name = ORKObserver.h; path = ResearchKit/Common/ORKObserver.h; sourceTree = "<group>"; };
 		E2FB72F81E8A1773008C9A50 /* RSAFActivityTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSAFActivityTableViewCell.swift; sourceTree = "<group>"; };
 		E2FB72FC1E8A1890008C9A50 /* RSAFActivityTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSAFActivityTableViewController.swift; sourceTree = "<group>"; };
@@ -2449,6 +2451,7 @@
 			isa = PBXGroup;
 			children = (
 				B96C6BB45EED1AFBC111557ADC1AEDA1 /* CTFOhmageLoginStepGenerator.swift */,
+				E2B942FB1E8AA68D00566A31 /* CTFOhmageSDKInjector.swift */,
 			);
 			path = RSTBSupport;
 			sourceTree = "<group>";
@@ -5022,6 +5025,7 @@
 				FD701157363EA479703FB518F21D6D37 /* CTFOhmageLoginStepGenerator.swift in Sources */,
 				DC68A3216FDBAB20A63A91CCC9750927 /* CTFOhmageLoginStepViewController.swift in Sources */,
 				2C0394CE91592272FB45A3A3B373107D /* OhmageOMHError.swift in Sources */,
+				E2B942FC1E8AA68D00566A31 /* CTFOhmageSDKInjector.swift in Sources */,
 				49C671E398B033A3D3DD3E2A68C58634 /* OhmageOMHManager.swift in Sources */,
 				E7D6505A0C735A399AABBC7F6E1E7B73 /* OhmageOMHSDK-dummy.m in Sources */,
 				684F60DC3AE491238A30273C520DD8D0 /* ORBEDefaultTransformer.swift in Sources */,
