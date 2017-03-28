@@ -1,0 +1,14 @@
+{
+  "type": "elementList",
+  "identifier": "demographics_list",
+  "elements": [
+    {
+      "identifier": "OhmageOMHLogin",
+      "type": "OhmageOMHLogin"
+    },
+    {
+      "identifier": "passcode",
+      "type": "passcode"
+    }
+  ]
+}

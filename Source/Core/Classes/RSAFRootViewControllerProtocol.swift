@@ -34,14 +34,22 @@ extension RSAFRootViewControllerProtocol {
     
     public func runActivity(uuid: UUID, activityRun: RSAFActivityRun, completion: @escaping ()->Void) {
         
+        let store = self.store
+        
         guard let vcSelf = self as? UIViewController,
-            let steps = self.taskBuilder?.steps(forElement: activityRun.activity) else {
-            return
+            let steps = self.taskBuilder?.steps(forElement: activityRun.activity),
+            steps.count > 0 else {
+            
+                DispatchQueue.main.async {
+                    store?.dispatch(RSAFActionCreators.completeActivity(uuid: uuid, activityRun: activityRun, taskResult: nil), callback: { (state) in
+                        completion()
+                    })
+                }
+                
+                return
         }
         
         let task = ORKOrderedTask(identifier: activityRun.identifier, steps: steps)
-        
-        let store = self.store
         
         let taskFinishedHandler: ((ORKTaskViewController, ORKTaskViewControllerFinishReason, Error?) -> ()) = { [weak vcSelf] (taskViewController, reason, error) in
             

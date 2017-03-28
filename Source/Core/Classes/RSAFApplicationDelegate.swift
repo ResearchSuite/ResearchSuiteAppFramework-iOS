@@ -11,6 +11,7 @@ import ResearchKit
 import ReSwift
 import ResearchSuiteResultsProcessor
 import ResearchSuiteTaskBuilder
+import Gloss
 
 open class RSAFApplicationDelegate: UIResponder, UIApplicationDelegate, ORKPasscodeDelegate {
     
@@ -27,10 +28,10 @@ open class RSAFApplicationDelegate: UIResponder, UIApplicationDelegate, ORKPassc
     
     //the following are subscribers
     var persistenceManager: RSAFCombinedPersistentStoreSubscriber?
-    var reduxStateManager: RSAFReduxStateManager?
+    var extensibleStateManager: RSAFExtensibleStateManager?
     
-    var taskBuilderManager: RSAFTaskBuilderManager?
-    var resultsProcessorManager: RSAFResultsProcessorManager?
+    open var taskBuilderManager: RSAFTaskBuilderManager?
+    open var resultsProcessorManager: RSAFResultsProcessorManager?
     
     open func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -46,7 +47,7 @@ open class RSAFApplicationDelegate: UIResponder, UIApplicationDelegate, ORKPassc
             }
         }
         
-        self.initializeState()
+        self.initializeStoreAndSubscribe()
         
         if let store = self.reduxStore,
             let state = store.state as? RSAFCombinedState {
@@ -78,8 +79,7 @@ open class RSAFApplicationDelegate: UIResponder, UIApplicationDelegate, ORKPassc
     
     open func showViewController(state: RSAFCombinedState) {
         
-        guard let window = self.window,
-            let coreState = state.coreState as? RSAFCoreState else {
+        guard let window = self.window else {
             return
         }
         
@@ -225,22 +225,22 @@ open class RSAFApplicationDelegate: UIResponder, UIApplicationDelegate, ORKPassc
     open func subscribeToStore(store: Store<RSAFCombinedState>) {
         //these should always exist
         store.subscribe(self.persistenceManager!)
-        store.subscribe(self.reduxStateManager!)
+        store.subscribe(self.extensibleStateManager!)
     }
     
     open func unsubscribeFromStore(store: Store<RSAFCombinedState>) {
         
         store.unsubscribe(self.persistenceManager!)
-        store.unsubscribe(self.reduxStateManager!)
+        store.unsubscribe(self.extensibleStateManager!)
         
     }
     
     
-    open func resultsProcessorManager(store: Store<RSAFCombinedState>) -> RSAFResultsProcessorManager {
+    open func createResultsProcessorManager(store: Store<RSAFCombinedState>) -> RSAFResultsProcessorManager {
         return RSAFResultsProcessorManager(store: store, backEnd: RSAFFakeBackEnd())
     }
     
-    open func taskBuilderManager(stateHelper: RSTBStateHelper) -> RSAFTaskBuilderManager {
+    open func createTaskBuilderManager(stateHelper: RSTBStateHelper) -> RSAFTaskBuilderManager {
         return RSAFTaskBuilderManager(stateHelper: stateHelper)
     }
     
@@ -260,8 +260,14 @@ open class RSAFApplicationDelegate: UIResponder, UIApplicationDelegate, ORKPassc
         )
     }
     
+    open func initializeStoreAndSubscribe() {
+        
+        let store = initializeStore()
+        self.subscribeToStore(store: store)
+        
+    }
     
-    open func initializeState() {
+    open func initializeStore() -> Store<RSAFCombinedState> {
         
         let keychainStateManager:RSAFStateManager.Type = RSAFKeychainStateManager.self
         let persistenceManager = loadPersistenceManager(stateManager: keychainStateManager)
@@ -270,25 +276,28 @@ open class RSAFApplicationDelegate: UIResponder, UIApplicationDelegate, ORKPassc
         
         let storeManager: RSAFReduxManager = RSAFReduxManager(initialState: persistedState, reducer: combinedReducer)
         
-        let reduxStateHelper = RSAFReduxStateManager(store: storeManager.store)
-        let taskBuilderManager  = self.taskBuilderManager(stateHelper: reduxStateHelper)
-        let resultsProcessorManager = self.resultsProcessorManager(store: storeManager.store)
+        let extensibleStateHelper = RSAFExtensibleStateManager(store: storeManager.store)
+        let taskBuilderManager  = self.createTaskBuilderManager(stateHelper: extensibleStateHelper)
+        let resultsProcessorManager = self.createResultsProcessorManager(store: storeManager.store)
         
         self.reduxManager = storeManager
-        self.reduxStateManager = reduxStateHelper
+        self.extensibleStateManager = extensibleStateHelper
         self.persistenceManager = persistenceManager
         self.taskBuilderManager = taskBuilderManager
         self.resultsProcessorManager = resultsProcessorManager
 
-        self.subscribeToStore(store: storeManager.store)
+        return storeManager.store
         
     }
     
-    open func resetState() {
-        
+    open func unsubscribeAndResetStore() {
         if let store = self.reduxManager?.store {
             self.unsubscribeFromStore(store: store )
         }
+        
+        self.resetStore()
+    }
+    open func resetStore() {
         
         self.reduxManager = nil
         self.persistenceManager = nil
@@ -297,12 +306,19 @@ open class RSAFApplicationDelegate: UIResponder, UIApplicationDelegate, ORKPassc
         
         RSAFKeychainStateManager.clearKeychain()
         
-        self.initializeState()
-        
+        self.initializeStoreAndSubscribe()
         
     }
     
     open func signOut() {
-        self.resetState()
+        self.unsubscribeAndResetStore()
+    }
+    
+    open func loadSchedule(filename: String) -> RSAFSchedule? {
+        guard let json = RSAFTaskBuilderManager.getJson(forFilename: filename) as? JSON else {
+            return nil
+        }
+        
+        return RSAFSchedule(json: json)
     }
 }

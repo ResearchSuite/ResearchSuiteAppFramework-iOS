@@ -10,7 +10,7 @@ import UIKit
 import ReSwift
 import ResearchSuiteTaskBuilder
 
-open class RSAFReduxStateManager: NSObject, RSTBStateHelper, StoreSubscriber {
+open class RSAFExtensibleStateManager: NSObject, RSTBStateHelper, StoreSubscriber {
 
     var valueSelector: ((String) -> NSSecureCoding?)?
     

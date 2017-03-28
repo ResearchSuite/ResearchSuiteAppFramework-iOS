@@ -17,8 +17,6 @@ public class RSAFPersistedValueMap: NSObject {
     var map: [String: RSAFPersistedValue<NSObject>]
     var keys: RSAFPersistedValue<NSArray>
     
-    
-    
     init(key: String, stateManager: RSAFStateManager.Type) {
         self.stateManager = stateManager
         
@@ -121,5 +119,9 @@ public class RSAFPersistedValueMap: NSObject {
             self[key] = nil
         }
         
+    }
+    
+    func clear() {
+        self.set(map: [:])
     }
 }

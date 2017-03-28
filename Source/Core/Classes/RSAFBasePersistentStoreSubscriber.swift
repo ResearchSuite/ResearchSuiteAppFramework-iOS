@@ -14,7 +14,7 @@ open class RSAFBasePersistentStoreSubscriber: RSAFPersistentStorageSubscriber {
     
     public let stateManager: RSAFStateManager.Type
     
-    init(stateManager: RSAFStateManager.Type) {
+    public init(stateManager: RSAFStateManager.Type) {
         self.stateManager = stateManager
     }
     

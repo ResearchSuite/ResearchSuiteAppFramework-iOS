@@ -53,9 +53,13 @@ open class RSAFCoreReducer: RSAFBaseReducer {
         ExtensibleStorageReducer()
     ])
     
+    open override func handleAction(action: Action, state: RSAFBaseState?) -> RSAFBaseState {
+        return RSAFCoreReducer.reducer._handleAction(action: action, state: state) as! RSAFBaseState
+    }
+    
     final class AppStateReducer: RSAFBaseReducer {
-        func handleAction(action: Action, state: RSAFCoreState?) -> RSAFCoreState {
-            let state = state ?? RSAFCoreState.empty()
+        open override func handleAction(action: Action, state: RSAFBaseState?) -> RSAFBaseState {
+            let state = (state ?? RSAFCoreState.empty()) as! RSAFCoreState
             
             switch action {
                 
@@ -65,15 +69,15 @@ open class RSAFCoreReducer: RSAFBaseReducer {
             default:
                 return state
             }
-            
         }
+    
     }
     
     final class ActivityQueueReducer: RSAFBaseReducer {
-        
-        func handleAction(action: Action, state: RSAFCoreState?) -> RSAFCoreState {
+
+        open override func handleAction(action: Action, state: RSAFBaseState?) -> RSAFBaseState {
             
-            let state = state ?? RSAFCoreState.empty()
+            let state = (state ?? RSAFCoreState.empty()) as! RSAFCoreState
             
             switch action {
                 
@@ -97,8 +101,8 @@ open class RSAFCoreReducer: RSAFBaseReducer {
     
     final class ResultsQueueReducer: RSAFBaseReducer {
         
-        func handleAction(action: Action, state: RSAFCoreState?) -> RSAFCoreState {
-            let state = state ?? RSAFCoreState.empty()
+        open override func handleAction(action: Action, state: RSAFBaseState?) -> RSAFBaseState {
+            let state = (state ?? RSAFCoreState.empty()) as! RSAFCoreState
             
             switch action {
                 
@@ -130,8 +134,8 @@ open class RSAFCoreReducer: RSAFBaseReducer {
     }
     
     final class ExtensibleStorageReducer: RSAFBaseReducer {
-        func handleAction(action: Action, state: RSAFCoreState?) -> RSAFCoreState {
-            let state = state ?? RSAFCoreState.empty()
+        open override func handleAction(action: Action, state: RSAFBaseState?) -> RSAFBaseState {
+            let state = (state ?? RSAFCoreState.empty()) as! RSAFCoreState
             
             switch action {
                 

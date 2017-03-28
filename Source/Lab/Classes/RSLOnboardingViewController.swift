@@ -8,18 +8,28 @@
 
 import UIKit
 import ResearchSuiteTaskBuilder
+import ReSwift
 
 open class RSLOnboardingViewController: RSAFRootViewController {
 
+//    var state: RSAFCombinedState?
+    
     override open func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
     }
 
-    override open func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    override open func newState(state: RSAFCombinedState) {
+        
+        super.newState(state: state)
+        
+        if let delegate = UIApplication.shared.delegate as? RSLApplicationDelegate,
+            delegate.isSignedIn(state: state),
+            let labState = state.middlewareState as? RSLLabState,
+            RSLLabSelectors.isResearcherDemographicsCompleted(labState) {
+            delegate.showViewController(state: state)
+        }
+        
     }
     
     
@@ -29,10 +39,7 @@ open class RSLOnboardingViewController: RSAFRootViewController {
             let item = delegate.signInItem(),
             let store = delegate.reduxStore {
             
-            let activityRun = RSAFActivityRun(
-                identifier: item.identifier,
-                activity: item.activity as JsonElement,
-                resultTransforms: item.resultTransforms)
+            let activityRun = RSAFActivityRun.create(from: item)
             
             let action = QueueActivityAction(uuid: UUID(), activityRun: activityRun)
             store.dispatch(action)
@@ -40,5 +47,4 @@ open class RSLOnboardingViewController: RSAFRootViewController {
         }
         
     }
-
 }

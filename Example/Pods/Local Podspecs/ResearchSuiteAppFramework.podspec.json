@@ -1,19 +1,19 @@
 {
   "name": "ResearchSuiteAppFramework",
-  "version": "0.1.0",
-  "summary": "A short description of ResearchSuiteAppFramework.",
-  "description": "TODO: Add long description of the pod here.",
+  "version": "0.0.1",
+  "summary": "The ResearchSuiteAppFramework is the easiest way to build mobile health research studies.",
+  "description": "The ResearchSuiteAppFramework is the easiest way to build mobile health research studies.",
   "homepage": "https://github.com/jdkizer9/ResearchSuiteAppFramework",
   "license": {
     "type": "Apache 2",
     "file": "LICENSE"
   },
   "authors": {
-    "James Kizer, Cornell Tech Foundry": "jdk288 at cornell dot edu"
+    "James Kizer, Curiosity Health": "james at curiosityhealth dot com"
   },
   "source": {
-    "git": "https://github.com/jdkizer9/ResearchSuiteAppFramework.git",
-    "tag": "0.1.0"
+    "git": "https://github.com/ResearchSuite/ResearchSuiteAppFramework-iOS",
+    "tag": "0.0.1"
   },
   "platforms": {
     "ios": "9.0"

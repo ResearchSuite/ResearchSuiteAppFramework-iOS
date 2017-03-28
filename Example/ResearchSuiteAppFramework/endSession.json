@@ -1,0 +1,12 @@
+{
+  "type": "elementList",
+  "identifier": "startSession",
+  "elements": [
+    {
+      "identifier": "end_session_notes",
+      "type": "textfield",
+      "title": "Notes",
+      "multipleLines": true
+    }
+  ]
+}

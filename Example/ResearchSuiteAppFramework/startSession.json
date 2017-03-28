@@ -1,0 +1,17 @@
+{
+  "type": "elementList",
+  "identifier": "startSession",
+  "elements": [
+    {
+      "identifier": "label",
+      "type": "textfield",
+      "title": "Group Label"
+    },
+    {
+      "identifier": "start_session_notes",
+      "type": "textfield",
+      "title": "Notes",
+      "multipleLines": true
+    }
+  ]
+}

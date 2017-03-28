@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import ResearchKit
 
 public class RSAFCoreSelectors: NSObject {
     
@@ -23,6 +24,10 @@ public class RSAFCoreSelectors: NSObject {
         return { key in
             return state.extensibleStorage[key] as? NSSecureCoding
         }
+    }
+    
+    public static func getResultsQueue(_ state: RSAFCoreState) -> [(UUID, RSAFActivityRun, ORKTaskResult)] {
+        return state.resultsQueue
     }
     
 

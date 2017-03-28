@@ -9,6 +9,8 @@
 import UIKit
 import Gloss
 import ResearchSuiteResultsProcessor
+import ResearchKit
+import ReSwift
 
 open class RSAFScheduleItem: Decodable {
     open let type: String
@@ -18,6 +20,7 @@ open class RSAFScheduleItem: Decodable {
     
     open let activity: JSON
     open let resultTransforms: [RSRPResultTransform]
+    open var onCompletionActionCreators: [(UUID, RSAFActivityRun, ORKTaskResult?) -> Action?]?
     
     // MARK: - Deserialization
     

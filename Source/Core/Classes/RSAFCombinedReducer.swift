@@ -30,8 +30,6 @@ open class RSAFCombinedReducer: Reducer {
     }
     
     public func handleAction(action: Action, state: RSAFCombinedState?) -> RSAFCombinedState {
-
-        let newCoreState = coreReducer.handleAction(action: action, state: state?.coreState)
         
         if let state = state {
             return RSAFCombinedState.newState(

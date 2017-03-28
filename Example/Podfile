@@ -4,9 +4,10 @@ target 'ResearchSuiteAppFramework_Example' do
   pod 'ResearchSuiteAppFramework/Lab', :path => '../'
 
   pod "sdlrkx"
-  pod "OhmageOMHSDK", "0.1.0"
-  pod "OhmageOMHSDK/RKSupport", "0.1.0"
-  pod "OhmageOMHSDK/RSRPSupport", "0.1.0"
+  pod "OhmageOMHSDK", :path => '../../../../ohmage/RSuiteSDKs/OhmageOMHSDK'
+  pod "OhmageOMHSDK/RSTBSupport", :path => '../../../../ohmage/RSuiteSDKs/OhmageOMHSDK'
+  pod "OhmageOMHSDK/RSRPSupport",:path => '../../../../ohmage/RSuiteSDKs/OhmageOMHSDK'
+  pod "ResearchSuiteTaskBuilder",:path => '../../ResearchSuiteTaskBuilder'
 
   target 'ResearchSuiteAppFramework_Tests' do
     inherit! :search_paths

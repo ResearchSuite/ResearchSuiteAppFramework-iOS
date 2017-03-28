@@ -1,0 +1,81 @@
+{
+  "type": "activities",
+  "identifier": "impulsivityActivities",
+  "title": "Activities",
+  "guid": "impusivity-activities-123",
+  "items": [
+    {
+      "type": "recurring",
+      "identifier": "sign_in",
+      "title": "Sign In",
+      "guid": "sign_in-1",
+      "activity": {
+        "type": "elementFile",
+        "identifier": "signIn",
+        "elementFileName": "signIn"
+      },
+      "resultTransforms": []
+    },
+    {
+      "type": "recurring",
+      "identifier": "researcher_demographics",
+      "title": "Researcher Demographics",
+      "guid": "researcher_demographics-1",
+      "activity": {
+        "type": "elementFile",
+        "identifier": "researcherDemographics",
+        "elementFileName": "researcherDemographics"
+      },
+      "resultTransforms": []
+    },
+    {
+      "type": "recurring",
+      "identifier": "participant_demographics",
+      "title": "Participant Demographics",
+      "guid": "participant_demographics-1",
+      "activity": {
+        "type": "elementFile",
+        "identifier": "participantDemographics",
+        "elementFileName": "participantDemographics"
+      },
+      "resultTransforms": []
+    },
+    {
+      "type": "recurring",
+      "identifier": "start_session",
+      "title": "Start Session",
+      "guid": "start_session-1",
+      "activity": {
+        "type": "elementList",
+        "identifier": "startSession",
+        "elements": [
+          {
+            "identifier": "label",
+            "type": "textfield",
+            "title": "Group Label"
+          },
+          {
+            "identifier": "start_session_notes",
+            "type": "textfield",
+            "title": "Notes",
+            "multipleLines": true
+          }
+        ]
+      },
+      "resultTransforms": []
+    },
+    {
+      "type": "recurring",
+      "identifier": "end_session",
+      "title": "End Session",
+      "guid": "end_session-1",
+      "activity": {
+        "identifier": "end_session_notes",
+        "type": "textfield",
+        "title": "Notes",
+        "multipleLines": true
+      },
+      "resultTransforms": []
+    }
+  ]
+}

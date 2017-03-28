@@ -1,20 +1,18 @@
 //
-//  RSAFRootViewController.swift
+//  RSAFRootNavigationControllerViewController.swift
 //  Pods
 //
-//  Created by James Kizer on 3/22/17.
+//  Created by James Kizer on 3/27/17.
 //
 //
 
 import UIKit
 import ReSwift
 import ResearchSuiteTaskBuilder
-import ResearchKit
 
-open class RSAFRootViewController: UIViewController, RSAFRootViewControllerProtocol, StoreSubscriber {
+open class RSAFRootNavigationControllerViewController: UINavigationController, RSAFRootViewControllerProtocol, StoreSubscriber {
 
     public var presentedActivity: UUID?
-    
     private var state: RSAFCombinedState?
     
     public var contentHidden = false {
@@ -75,7 +73,6 @@ open class RSAFRootViewController: UIViewController, RSAFRootViewControllerProto
         
         return delegate.taskBuilderManager?.rstb
     }
-    
-    
+
 
 }

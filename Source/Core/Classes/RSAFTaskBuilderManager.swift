@@ -11,19 +11,22 @@ import ResearchSuiteTaskBuilder
 
 open class RSAFTaskBuilderManager: NSObject {
     
-    
-    open class func stepGeneratorServices() -> [RSTBStepGenerator] {
+    open class var stepGeneratorServices: [RSTBStepGenerator] {
         return [
             RSTBInstructionStepGenerator(),
             RSTBTextFieldStepGenerator(),
             RSTBIntegerStepGenerator(),
             RSTBTimePickerStepGenerator(),
             RSTBFormStepGenerator(),
-            RSTBDatePickerStepGenerator()
+            RSTBDatePickerStepGenerator(),
+            RSTBSingleChoiceStepGenerator(),
+            RSTBMultipleChoiceStepGenerator(),
+            RSTBBooleanStepGenerator(),
+            RSTBPasscodeStepGenerator()
         ]
     }
     
-    open class func answerFormatGeneratorServices() -> [RSTBAnswerFormatGenerator] {
+    open class var answerFormatGeneratorServices:  [RSTBAnswerFormatGenerator] {
         return [
             RSTBTextFieldStepGenerator(),
             RSTBIntegerStepGenerator(),
@@ -31,8 +34,8 @@ open class RSAFTaskBuilderManager: NSObject {
             RSTBDatePickerStepGenerator()
         ]
     }
-
-    open class func elementGeneratorServices() -> [RSTBElementGenerator] {
+    
+    open class var elementGeneratorServices: [RSTBElementGenerator] {
         return [
             RSTBElementListGenerator(),
             RSTBElementFileGenerator(),
@@ -42,17 +45,49 @@ open class RSAFTaskBuilderManager: NSObject {
     
     let rstb: RSTBTaskBuilder
     
-    init(stateHelper: RSTBStateHelper) {
+//    public init(
+//        stateHelper: RSTBStateHelper
+//    ) {
+//        
+//        // Do any additional setup after loading the view, typically from a nib.
+//        self.rstb = RSTBTaskBuilder(
+//            stateHelper: stateHelper,
+//            elementGeneratorServices: RSAFTaskBuilderManager.elementGeneratorServices(),
+//            stepGeneratorServices: RSAFTaskBuilderManager.stepGeneratorServices(),
+//            answerFormatGeneratorServices: RSAFTaskBuilderManager.answerFormatGeneratorServices())
+//        
+//        super.init()
+//        
+//        
+//    }
+    
+    public init(
+        stateHelper: RSTBStateHelper,
+        elementGeneratorServices: [RSTBElementGenerator],
+        stepGeneratorServices: [RSTBStepGenerator],
+        answerFormatGeneratorServices:  [RSTBAnswerFormatGenerator]
+    ) {
         
         // Do any additional setup after loading the view, typically from a nib.
         self.rstb = RSTBTaskBuilder(
             stateHelper: stateHelper,
-            elementGeneratorServices: RSAFTaskBuilderManager.elementGeneratorServices(),
-            stepGeneratorServices: RSAFTaskBuilderManager.stepGeneratorServices(),
-            answerFormatGeneratorServices: RSAFTaskBuilderManager.answerFormatGeneratorServices())
+            elementGeneratorServices: elementGeneratorServices,
+            stepGeneratorServices: stepGeneratorServices,
+            answerFormatGeneratorServices: answerFormatGeneratorServices)
         
         super.init()
         
+        
+    }
+    
+    convenience public init(stateHelper: RSTBStateHelper) {
+
+        self.init(
+            stateHelper: stateHelper,
+            elementGeneratorServices: RSAFTaskBuilderManager.elementGeneratorServices,
+            stepGeneratorServices: RSAFTaskBuilderManager.stepGeneratorServices,
+            answerFormatGeneratorServices: RSAFTaskBuilderManager.answerFormatGeneratorServices
+        )
         
     }
     

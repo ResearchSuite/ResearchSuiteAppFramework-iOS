@@ -16,7 +16,7 @@ open class RSAFCombinedPersistentStoreSubscriber: NSObject, StoreSubscriber {
     let middlewareSubscriber: RSAFBasePersistentStoreSubscriber
     let appSubscriber: RSAFBasePersistentStoreSubscriber
     
-    init(
+    public init(
         coreSubscriber: RSAFBasePersistentStoreSubscriber,
         middlewareSubscriber: RSAFBasePersistentStoreSubscriber,
         appSubscriber: RSAFBasePersistentStoreSubscriber) {
@@ -34,6 +34,9 @@ open class RSAFCombinedPersistentStoreSubscriber: NSObject, StoreSubscriber {
     
     public func newState(state: RSAFCombinedState) {
         
+        coreSubscriber.newState(state: state.coreState)
+        middlewareSubscriber.newState(state: state.middlewareState)
+        appSubscriber.newState(state: state.appState)
         
         
     }

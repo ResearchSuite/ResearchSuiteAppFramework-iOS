@@ -9,20 +9,34 @@
 import UIKit
 import ResearchSuiteTaskBuilder
 import ResearchSuiteResultsProcessor
+import ResearchKit
+import ReSwift
 
 public struct RSAFActivityRun {
     
     let identifier: String
     let activity: JsonElement
     let resultTransforms: [RSRPResultTransform]?
+    var onCompletionActionCreators: [(UUID, RSAFActivityRun, ORKTaskResult?) -> Action?]?
     
-    init(identifier: String,
+    public init(identifier: String,
          activity: JsonElement,
-         resultTransforms: [RSRPResultTransform]?) {
+         resultTransforms: [RSRPResultTransform]?,
+         onCompletionActionCreators: [(UUID, RSAFActivityRun, ORKTaskResult?) -> Action?]? = nil
+        ) {
         
         self.identifier = identifier
         self.activity = activity
         self.resultTransforms = resultTransforms
+        self.onCompletionActionCreators = onCompletionActionCreators
+    }
+    
+    public static func create(from scheduleItem: RSAFScheduleItem) -> RSAFActivityRun {
+        return RSAFActivityRun(
+            identifier: scheduleItem.identifier,
+            activity: scheduleItem.activity as JsonElement,
+            resultTransforms: scheduleItem.resultTransforms,
+            onCompletionActionCreators: scheduleItem.onCompletionActionCreators)
     }
 
 }

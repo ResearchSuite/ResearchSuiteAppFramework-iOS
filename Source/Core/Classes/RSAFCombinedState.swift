@@ -9,7 +9,7 @@
 import UIKit
 import ReSwift
 
-open class RSAFCombinedState: StateType {
+open class RSAFCombinedState: NSObject, StateType {
     
     public let coreState: RSAFBaseState
     public let middlewareState: RSAFBaseState
@@ -38,6 +38,12 @@ open class RSAFCombinedState: StateType {
             middlewareState: middlewareState ?? fromState.middlewareState,
             appState: appState ?? fromState.appState
         )
+    }
+    
+    override open var description: String {
+        
+        return "\n\tcoreState: \(self.coreState)\n\tmiddlewareState: \(self.middlewareState)\n\tappState: \(self.appState)"
+    
     }
     
 }

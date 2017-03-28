@@ -20,6 +20,7 @@ class OhmageCredentialsStore: NSObject, OhmageOMHSDKCredentialStore, StoreSubscr
     init(store: Store<RSAFCombinedState>) {
         self.store = store
         super.init()
+        self.newState(state: store.state)
     }
     
     open func newState(state: RSAFCombinedState) {
@@ -34,15 +35,7 @@ class OhmageCredentialsStore: NSObject, OhmageOMHSDKCredentialStore, StoreSubscr
     func get(key: String) -> NSSecureCoding? {
         return self.valueSelector?(key)
     }
-    
-//    open func setValueInState(value: NSSecureCoding?, forKey: String) {
-//        self.store.dispatch(RSAFActionCreators.setValueInExtensibleStorage(key: forKey, value: value != nil ? value! as? NSObject : nil))
-//    }
-//    
-//    open func valueInState(forKey: String) -> NSSecureCoding? {
-//        return self.valueSelector?(forKey)
-//    }
-    
+
     deinit {
         debugPrint("\(self) deiniting")
     }

@@ -32,8 +32,21 @@ open class RSAFActionCreators: NSObject {
         }
     }
     
+    public static func queueActivity(uuid: UUID, activityRun: RSAFActivityRun) -> Action {
+        return QueueActivityAction(uuid: uuid, activityRun: activityRun)
+    }
+    
     public static func completeActivity<T>(uuid: UUID, activityRun: RSAFActivityRun, taskResult: ORKTaskResult?) -> AsyncActionCreator<T> {
         return { (state, store, actionCreatorCallback) in
+            
+            if let onCompletionActionCreators = activityRun.onCompletionActionCreators {
+                let actions = onCompletionActionCreators.flatMap({ (creator) -> Action? in
+                    return creator(uuid, activityRun, taskResult)
+                })
+                actions.forEach({ (action) in
+                    store.dispatch(action)
+                })
+            }
             
             let completeAction = CompleteActivityAction(uuid: uuid, activityRun: activityRun, taskResult: taskResult)
             actionCreatorCallback( { (store, state) in

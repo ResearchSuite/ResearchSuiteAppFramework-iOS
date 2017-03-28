@@ -15,9 +15,15 @@
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
 		6A232A91C1006F9A4AEF4950 /* Pods_ResearchSuiteAppFramework_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7A3BBD0BB9F2E19CA46A70A /* Pods_ResearchSuiteAppFramework_Example.framework */; };
-		E25C68B21E830A7E001C1881 /* OnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E25C68B11E830A7E001C1881 /* OnboardingViewController.swift */; };
+		E2231A9D1E89EA9800DBB1BA /* startSession.json in Resources */ = {isa = PBXBuildFile; fileRef = E2231A9C1E89EA9800DBB1BA /* startSession.json */; };
 		E264E7E91E871A6600582958 /* OhmageCredentialsStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = E264E7E81E871A6600582958 /* OhmageCredentialsStore.swift */; };
 		E264E7EB1E871F3D00582958 /* OMHClient.plist in Resources */ = {isa = PBXBuildFile; fileRef = E264E7EA1E871F3D00582958 /* OMHClient.plist */; };
+		E264E7F01E88C3C900582958 /* RSAFAppTaskBuilderManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E264E7EF1E88C3C900582958 /* RSAFAppTaskBuilderManager.swift */; };
+		E264E7F61E88C78A00582958 /* onboardingSchedule.json in Resources */ = {isa = PBXBuildFile; fileRef = E264E7F41E88C78A00582958 /* onboardingSchedule.json */; };
+		E264E7F71E88C78A00582958 /* participantSchedule.json in Resources */ = {isa = PBXBuildFile; fileRef = E264E7F51E88C78A00582958 /* participantSchedule.json */; };
+		E264E7FB1E88D1A200582958 /* participantDemographics.json in Resources */ = {isa = PBXBuildFile; fileRef = E264E7F81E88D1A200582958 /* participantDemographics.json */; };
+		E264E7FC1E88D1A200582958 /* researcherDemographics.json in Resources */ = {isa = PBXBuildFile; fileRef = E264E7F91E88D1A200582958 /* researcherDemographics.json */; };
+		E264E7FD1E88D1A200582958 /* signIn.json in Resources */ = {isa = PBXBuildFile; fileRef = E264E7FA1E88D1A200582958 /* signIn.json */; };
 		E29BF1321E82D69000157E10 /* Onboarding.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E29BF1311E82D69000157E10 /* Onboarding.storyboard */; };
 /* End PBXBuildFile section */
 
@@ -50,9 +56,15 @@
 		D08467DA0B02A01BD74FCF14 /* Pods-ResearchSuiteAppFramework_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ResearchSuiteAppFramework_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ResearchSuiteAppFramework_Tests/Pods-ResearchSuiteAppFramework_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		D2CA435EC58D3CCD2695AF31 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		D47ECF53BC1B394DC67B1F84 /* Pods_ResearchSuiteAppFramework_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ResearchSuiteAppFramework_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E25C68B11E830A7E001C1881 /* OnboardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingViewController.swift; sourceTree = "<group>"; };
+		E2231A9C1E89EA9800DBB1BA /* startSession.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = startSession.json; sourceTree = "<group>"; };
 		E264E7E81E871A6600582958 /* OhmageCredentialsStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OhmageCredentialsStore.swift; sourceTree = "<group>"; };
 		E264E7EA1E871F3D00582958 /* OMHClient.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = OMHClient.plist; sourceTree = "<group>"; };
+		E264E7EF1E88C3C900582958 /* RSAFAppTaskBuilderManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RSAFAppTaskBuilderManager.swift; sourceTree = "<group>"; };
+		E264E7F41E88C78A00582958 /* onboardingSchedule.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = onboardingSchedule.json; sourceTree = "<group>"; };
+		E264E7F51E88C78A00582958 /* participantSchedule.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = participantSchedule.json; sourceTree = "<group>"; };
+		E264E7F81E88D1A200582958 /* participantDemographics.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = participantDemographics.json; sourceTree = "<group>"; };
+		E264E7F91E88D1A200582958 /* researcherDemographics.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = researcherDemographics.json; sourceTree = "<group>"; };
+		E264E7FA1E88D1A200582958 /* signIn.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = signIn.json; sourceTree = "<group>"; };
 		E29BF1311E82D69000157E10 /* Onboarding.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Onboarding.storyboard; sourceTree = "<group>"; };
 		E7A3BBD0BB9F2E19CA46A70A /* Pods_ResearchSuiteAppFramework_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ResearchSuiteAppFramework_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -124,7 +136,8 @@
 				607FACD51AFB9204008FA782 /* AppDelegate.swift */,
 				E264E7E81E871A6600582958 /* OhmageCredentialsStore.swift */,
 				607FACD71AFB9204008FA782 /* ViewController.swift */,
-				E25C68B11E830A7E001C1881 /* OnboardingViewController.swift */,
+				E264E7EF1E88C3C900582958 /* RSAFAppTaskBuilderManager.swift */,
+				E264E7F31E88C6F500582958 /* config */,
 				607FACD91AFB9204008FA782 /* Main.storyboard */,
 				E29BF1311E82D69000157E10 /* Onboarding.storyboard */,
 				607FACDC1AFB9204008FA782 /* Images.xcassets */,
@@ -169,6 +182,19 @@
 				D2CA435EC58D3CCD2695AF31 /* LICENSE */,
 			);
 			name = "Podspec Metadata";
+			sourceTree = "<group>";
+		};
+		E264E7F31E88C6F500582958 /* config */ = {
+			isa = PBXGroup;
+			children = (
+				E264E7F41E88C78A00582958 /* onboardingSchedule.json */,
+				E264E7F81E88D1A200582958 /* participantDemographics.json */,
+				E264E7F91E88D1A200582958 /* researcherDemographics.json */,
+				E2231A9C1E89EA9800DBB1BA /* startSession.json */,
+				E264E7FA1E88D1A200582958 /* signIn.json */,
+				E264E7F51E88C78A00582958 /* participantSchedule.json */,
+			);
+			name = config;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -261,10 +287,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
+				E2231A9D1E89EA9800DBB1BA /* startSession.json in Resources */,
+				E264E7FC1E88D1A200582958 /* researcherDemographics.json in Resources */,
+				E264E7FB1E88D1A200582958 /* participantDemographics.json in Resources */,
+				E264E7FD1E88D1A200582958 /* signIn.json in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
+				E264E7F61E88C78A00582958 /* onboardingSchedule.json in Resources */,
 				E264E7EB1E871F3D00582958 /* OMHClient.plist in Resources */,
 				E29BF1321E82D69000157E10 /* Onboarding.storyboard in Resources */,
+				E264E7F71E88C78A00582958 /* participantSchedule.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -377,7 +409,7 @@
 			files = (
 				E264E7E91E871A6600582958 /* OhmageCredentialsStore.swift in Sources */,
 				607FACD81AFB9204008FA782 /* ViewController.swift in Sources */,
-				E25C68B21E830A7E001C1881 /* OnboardingViewController.swift in Sources */,
+				E264E7F01E88C3C900582958 /* RSAFAppTaskBuilderManager.swift in Sources */,
 				607FACD61AFB9204008FA782 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

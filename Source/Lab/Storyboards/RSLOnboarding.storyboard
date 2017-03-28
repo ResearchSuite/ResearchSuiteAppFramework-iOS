@@ -20,9 +20,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jOs-os-h5h">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jOs-os-h5h">
                                 <rect key="frame" x="164" y="617" width="47" height="30"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Sign In"/>
                                 <connections>
                                     <action selector="signInTapped:" destination="4Nj-v1-q6d" eventType="touchUpInside" id="W3k-YI-Xnx"/>
@@ -30,6 +29,10 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="lZ1-sC-fHF" firstAttribute="top" secondItem="jOs-os-h5h" secondAttribute="bottom" constant="20" id="GWm-SR-QlW"/>
+                            <constraint firstItem="jOs-os-h5h" firstAttribute="centerX" secondItem="ffw-wH-rlw" secondAttribute="centerX" id="Hlq-Ik-LKd"/>
+                        </constraints>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lV0-xu-kRK" userLabel="First Responder" sceneMemberID="firstResponder"/>

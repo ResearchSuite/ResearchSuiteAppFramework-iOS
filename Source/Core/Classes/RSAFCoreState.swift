@@ -53,4 +53,8 @@ public final class RSAFCoreState: RSAFBaseState {
         )
     }
     
+    open override var description: String {
+        return "\n\tloggedIn: \(self.loggedIn)\n\tactivityQueue: \(self.activityQueue)\n\tresultsQueue: \(self.resultsQueue)\n\textensibleStorage: \(self.extensibleStorage)"
+    }
+    
 }

@@ -1,0 +1,163 @@
+{
+  "type": "activities",
+  "identifier": "impulsivityActivities",
+  "title": "Activities",
+  "guid": "impusivity-activities-123",
+  "items": [
+    {
+      "type": "recurring",
+      "identifier": "go-no-go-stable",
+      "title": "Square Task #1",
+      "guid": "go-no-go-stable-1",
+      "activity": {
+        "type": "elementFile",
+        "identifier": "go_no_go_stable_stimulus_short_task",
+        "elementFileName": "go_no_go_stable_stimulus_short_task"
+      },
+      "resultTransforms": [
+        {
+          "transform": "GoNoGoSummary",
+          "inputMapping": [
+            {"stepIdentifier":"go_no_go_stable_stimulus_active_task", "parameter":"GoNoGoResult"}
+          ]
+        }
+      ]
+    },
+    {
+      "type": "recurring",
+      "identifier": "go-no-go-variable",
+      "title": "Square Task #2",
+      "guid": "go-no-go-variable-1",
+      "activity": {
+        "type": "elementFile",
+        "identifier": "go_no_go_variable_stimulus_short_task",
+        "elementFileName": "go_no_go_variable_stimulus_short_task"
+      },
+      "resultTransforms": [
+        {
+          "transform": "GoNoGoSummary",
+          "inputMapping": [
+            {"stepIdentifier":"go_no_go_variable_stimulus_active_task", "parameter":"GoNoGoResult"}
+          ]
+        }
+      ]
+    },
+
+    {
+      "type": "recurring",
+      "identifier": "bart.25",
+      "title": "BART $.25",
+      "guid": "bart.25-1",
+      "activity": {
+        "type": "elementFile",
+        "identifier": "bart_25_cents_short_task",
+        "elementFileName": "bart_25_cents_short_task"
+      },
+      "resultTransforms": [
+        {
+          "transform": "BARTSummary",
+          "inputMapping": [
+            {"stepIdentifier":"bart_25_cents_active_task", "parameter":"BARTResult"}
+          ]
+        }
+      ]
+    },
+    {
+      "type": "recurring",
+      "identifier": "bart250",
+      "title": "BART $250",
+      "guid": "bart250-1",
+      "activity": {
+        "type": "elementFile",
+        "identifier": "bart_250_dollars_short_task",
+        "elementFileName": "bart_250_dollars_short_task"
+      },
+      "resultTransforms": [
+        {
+          "transform": "BARTSummary",
+          "inputMapping": [
+            {"stepIdentifier":"bart_250_dollars_active_task", "parameter":"BARTResult"}
+          ]
+        }
+      ]
+    },
+
+
+    {
+      "type": "recurring",
+      "identifier": "DD_Money_1Month",
+      "title": "Now and Later #1",
+      "guid": "DD_Money_1Month-1",
+      "activity": {
+        "type": "elementFile",
+        "identifier": "dd_money_1_month_short_task",
+        "elementFileName": "dd_money_1_month_short_task"
+      },
+      "resultTransforms": [
+        {
+          "transform": "DelayDiscountingRaw",
+          "inputMapping": [
+            {"stepIdentifier":"dd_money_1_month", "parameter":"DelayDiscountingResult"}
+          ]
+        }
+      ]
+    },
+    {
+      "type": "recurring",
+      "identifier": "DD_Money_6Month",
+      "title": "Now and Later #2",
+      "guid": "DD_Money_6Month-1",
+      "activity": {
+        "type": "elementFile",
+        "identifier": "dd_money_6_month_short_task",
+        "elementFileName": "dd_money_6_month_short_task"
+      },
+      "resultTransforms": [
+        {
+          "transform": "DelayDiscountingRaw",
+          "inputMapping": [
+            {"stepIdentifier":"dd_money_6_month", "parameter":"DelayDiscountingResult"}
+          ]
+        }
+      ]
+    },
+    {
+      "type": "recurring",
+      "identifier": "DD_Time_1Month",
+      "title": "Now and Later #3",
+      "guid": "DD_Time_1Month-1",
+      "activity": {
+        "type": "elementFile",
+        "identifier": "dd_time_1_year_short_task",
+        "elementFileName": "dd_time_1_year_short_task"
+      },
+      "resultTransforms": [
+        {
+          "transform": "DelayDiscountingRaw",
+          "inputMapping": [
+            {"stepIdentifier":"dd_time_1_year", "parameter":"DelayDiscountingResult"}
+          ]
+        }
+      ]
+    },
+    {
+      "type": "recurring",
+      "identifier": "DD_Time_6Month",
+      "title": "Now and Later #4",
+      "guid": "DD_Time_6Month-1",
+      "activity": {
+        "type": "elementFile",
+        "identifier": "dd_time_6_month_short_task",
+        "elementFileName": "dd_time_6_month_short_task"
+      },
+      "resultTransforms": [
+        {
+          "transform": "DelayDiscountingRaw",
+          "inputMapping": [
+            {"stepIdentifier":"dd_time_6_month", "parameter":"DelayDiscountingResult"}
+          ]
+        }
+      ]
+    }
+  ]
+}
