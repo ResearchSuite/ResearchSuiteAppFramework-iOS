@@ -11,7 +11,7 @@ import ResearchSuiteAppFramework
 import OhmageOMHSDK
 import ReSwift
 
-open class OhmageExtensibleStateManager: RSAFExtensibleStateManager, CTFOhmageSDKInjector {
+open class OhmageExtensibleStateManager: RSAFExtensibleStateManager, OhmageManagerProvider {
     
     let ohmageManagerClosure: (() -> OhmageOMHManager?)?
     
