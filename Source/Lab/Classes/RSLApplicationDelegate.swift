@@ -21,6 +21,7 @@ open class RSLApplicationDelegate: RSAFApplicationDelegate {
             return nil
         }
         let storyboard = UIStoryboard(name: "RSLOnboarding", bundle: resourceBundle)
+        let vc = storyboard.instantiateInitialViewController()
         return storyboard.instantiateInitialViewController()
     }
     
@@ -46,50 +47,26 @@ open class RSLApplicationDelegate: RSAFApplicationDelegate {
     
     open override func showViewController(state: RSAFCombinedState) {
         
-        guard let window = self.window else {
-                return
-        }
-        
         //check for case where a failure occurs during login
         if isSignedIn(state: state) && !ORKPasscodeViewController.isPasscodeStoredInKeychain() {
             self.signOut()
         }
         
-        if !isSignedIn(state: state) {
+        if !isSignedIn(state: state) && ORKPasscodeViewController.isPasscodeStoredInKeychain() {
+            self.signOut()
+        }
+        
+        if !isSignedIn(state: state) || !isResearcherDemographicsCompleted(state: state) {
             if let vc = self.instantiateOnboardingViewController(),
                 vc as? RSAFRootViewControllerProtocol != nil {
-                window.rootViewController = vc
+                self.transition(toRootViewController: vc, animated: true)
                 return
             }
         }
-        else if !isResearcherDemographicsCompleted(state: state) {
-            assert(isSignedIn(state: state))
-            if window.rootViewController as? RSAFRootViewControllerProtocol == nil {
-                if let vc = self.instantiateOnboardingViewController(),
-                    vc as? RSAFRootViewControllerProtocol != nil {
-                    window.rootViewController = vc
-                }
-            }
-            //mount base vc
-            //emit demographics action
-//            if let item = self.researcherDemographics(),
-//                let store = self.reduxStore {
-//                
-//                let activityRun = RSAFActivityRun(
-//                    identifier: item.identifier,
-//                    activity: item.activity as JsonElement,
-//                    resultTransforms: item.resultTransforms)
-//                
-//                let action = QueueActivityAction(uuid: UUID(), activityRun: activityRun)
-//                store.dispatch(action)
-//            }
-            
-        }
-                
         else {
             if let vc = self.instantiateMainViewController(),
                 vc as? RSAFRootViewControllerProtocol != nil {
-                window.rootViewController = vc
+                self.transition(toRootViewController: vc, animated: true)
                 return
             }
         }

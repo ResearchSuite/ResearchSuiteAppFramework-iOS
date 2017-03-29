@@ -2,22 +2,24 @@
   "identifier": "researcher_information",
   "type": "form",
   "title": "Researcher Information",
-  "text": "Form Text",
   "items": [
     {
       "identifier": "name",
       "type": "textfield",
-      "text": "Name"
+      "text": "Name",
+      "textType": "name"
     },
     {
       "identifier": "institution",
       "type": "textfield",
-      "text": "Institution"
+      "text": "Institution",
+      "textType": "name"
     },
     {
       "identifier": "email",
       "type": "textfield",
-      "text": "Email"
+      "text": "Email",
+      "textType": "email"
     }
   ]
 }

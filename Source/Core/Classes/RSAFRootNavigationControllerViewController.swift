@@ -27,9 +27,8 @@ open class RSAFRootNavigationControllerViewController: UINavigationController, R
         }
     }
     
-    override open func viewDidLoad() {
-        super.viewDidLoad()
-        
+    override open func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         self.store?.subscribe(self)
     }
     

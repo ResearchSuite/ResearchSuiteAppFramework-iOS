@@ -107,12 +107,11 @@ final class AppDelegate: RSLApplicationDelegate {
         }
         
         let actionCreator: (UUID, RSAFActivityRun, ORKTaskResult?) -> Action? = { uuid, activityRun, result in
-            guard let item = self.researcherDemographics() else {
-                return nil
+            guard result != nil,
+                let item = self.researcherDemographics() else {
+                    return nil
             }
-            let researcherDemographicsActivityRun = RSAFActivityRun.create(from: item)
-            
-            return RSAFActionCreators.queueActivity(uuid: UUID(), activityRun: researcherDemographicsActivityRun)
+            return RSAFActionCreators.queueActivity(fromScheduleItem: item)
         }
         
         item.onCompletionActionCreators = [actionCreator]
@@ -140,11 +139,6 @@ final class AppDelegate: RSLApplicationDelegate {
         return item
     }
     
-    //on completion, this launches the participant demographics
-//    open func startSessionItem() -> RSAFScheduleItem? {
-//        return nil
-//    }
-    
     //also, we should clear the session store
     open override func startSessionItem() -> RSAFScheduleItem? {
         guard let onboardingSchedule = self.onboardingSchedule,
@@ -153,13 +147,11 @@ final class AppDelegate: RSLApplicationDelegate {
         }
         
         let actionCreator: (UUID, RSAFActivityRun, ORKTaskResult?) -> Action? = { uuid, activityRun, result in
-            guard let item = self.participantDemographics(withSessionId: uuid) else {
+            guard result != nil,
+                let item = self.participantDemographics() else {
                 return nil
             }
-  
-            let nestedActivityRun = RSAFActivityRun.create(from: item)
-            
-            return RSAFActionCreators.queueActivity(uuid: UUID(), activityRun: nestedActivityRun)
+            return RSAFActionCreators.queueActivity(fromScheduleItem: item)
         }
         
         item.onCompletionActionCreators = [actionCreator]
@@ -169,46 +161,37 @@ final class AppDelegate: RSLApplicationDelegate {
     
     
     //on completion, this sets the session id
-    func participantDemographics(withSessionId sessionId: UUID) -> RSAFScheduleItem? {
-        
-        if let item = participantDemographics() {
-            
-            let actionCreator: (UUID, RSAFActivityRun, ORKTaskResult?) -> Action? = { uuid, activityRun, result in
-                if result != nil,
-                    let store = self.reduxStore {
-                    let sessionStateManager = RSLSessionStateManager(store: store)
-                    let taskBuilderManager = self.createTaskBuilderManager(stateHelper: sessionStateManager)
-                    let resultsProcessorManager = self.createResultsProcessorManager(store: store)
-                    return RSLLabActionCreators.startSession(
-                        sessionId: uuid.uuidString,
-                        taskBuilderManager: taskBuilderManager,
-                        resultsProcessorManager: resultsProcessorManager
-                    )
-                }
-                else {
-                    return RSLLabActionCreators.endCurrentSession()
-                }
-                
-            }
-            
-            item.onCompletionActionCreators = [actionCreator]
-            
-            return item
-            
-        }
-        else {
-            return nil
-        }
-    
-    }
     open override func participantDemographics() -> RSAFScheduleItem? {
+        
         guard let onboardingSchedule = self.onboardingSchedule,
             let item = onboardingSchedule.itemMap["participant_demographics"] else {
                 return nil
         }
+        
+        let actionCreator: (UUID, RSAFActivityRun, ORKTaskResult?) -> Action? = { uuid, activityRun, result in
+            if result != nil,
+                let store = self.reduxStore {
+                let sessionStateManager = RSLSessionStateManager(store: store)
+                let taskBuilderManager = self.createTaskBuilderManager(stateHelper: sessionStateManager)
+                let resultsProcessorManager = self.createResultsProcessorManager(store: store)
+                return RSLLabActionCreators.startSession(
+                    sessionId: uuid.uuidString,
+                    taskBuilderManager: taskBuilderManager,
+                    resultsProcessorManager: resultsProcessorManager
+                )
+            }
+            else {
+                return RSLLabActionCreators.endCurrentSession()
+            }
+            
+        }
+        
+        item.onCompletionActionCreators = [actionCreator]
+        
         return item
-    }
     
+    }
+
     open override func signOut() {
         self.ohmageManager.signOut { (error) in
             super.signOut()

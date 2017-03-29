@@ -211,9 +211,7 @@
 			isa = PBXGroup;
 			children = (
 				E264E7F41E88C78A00582958 /* onboardingSchedule.json */,
-				E264E7F81E88D1A200582958 /* participantDemographics.json */,
 				E264E7F91E88D1A200582958 /* researcherDemographics.json */,
-				E2231A9C1E89EA9800DBB1BA /* startSession.json */,
 				E264E7FA1E88D1A200582958 /* signIn.json */,
 				E2FB72FE1E8A1CEE008C9A50 /* participant */,
 			);
@@ -225,6 +223,8 @@
 			children = (
 				E2FB72FF1E8A1DD4008C9A50 /* bart_25_cents_full_task.json */,
 				E2FB73001E8A1DD4008C9A50 /* bart_250_dollars_full_task.json */,
+				E2231A9C1E89EA9800DBB1BA /* startSession.json */,
+				E264E7F81E88D1A200582958 /* participantDemographics.json */,
 				E2FB73011E8A1DD4008C9A50 /* dd_money_1_month_full_task.json */,
 				E2FB73021E8A1DD4008C9A50 /* dd_money_6_month_full_task.json */,
 				E2FB73031E8A1DD4008C9A50 /* dd_time_1_year_full_task.json */,
@@ -294,10 +294,12 @@
 				TargetAttributes = {
 					607FACCF1AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = AA753846B2;
 						LastSwiftMigration = 0820;
 					};
 					607FACE41AFB9204008FA782 = {
 						CreatedOnToolsVersion = 6.3.1;
+						DevelopmentTeam = AA753846B2;
 						LastSwiftMigration = 0820;
 						TestTargetID = 607FACCF1AFB9204008FA782;
 					};
@@ -596,10 +598,11 @@
 			baseConfigurationReference = 1681A03AF66C912AB0B870C5 /* Pods-ResearchSuiteAppFramework_Example.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = AA753846B2;
 				INFOPLIST_FILE = ResearchSuiteAppFramework/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = org.researchsuite.ResearchSuiteAppFrameworkExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -610,10 +613,11 @@
 			baseConfigurationReference = 0EE870E23B39C357786C25EB /* Pods-ResearchSuiteAppFramework_Example.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = AA753846B2;
 				INFOPLIST_FILE = ResearchSuiteAppFramework/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MODULE_NAME = ExampleApp;
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.demo.$(PRODUCT_NAME:rfc1034identifier)";
+				PRODUCT_BUNDLE_IDENTIFIER = org.researchsuite.ResearchSuiteAppFrameworkExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -623,6 +627,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B52CC9F40B5EDF56A74F60E0 /* Pods-ResearchSuiteAppFramework_Tests.debug.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = AA753846B2;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",
@@ -643,6 +648,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = D08467DA0B02A01BD74FCF14 /* Pods-ResearchSuiteAppFramework_Tests.release.xcconfig */;
 			buildSettings = {
+				DEVELOPMENT_TEAM = AA753846B2;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(SDKROOT)/Developer/Library/Frameworks",
 					"$(inherited)",

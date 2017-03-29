@@ -79,12 +79,12 @@ open class RSAFApplicationDelegate: UIResponder, UIApplicationDelegate, ORKPassc
     
     open func showViewController(state: RSAFCombinedState) {
         
-        guard let window = self.window else {
-            return
-        }
-        
         //check for case where a failure occurs during login
         if isSignedIn(state: state) && !ORKPasscodeViewController.isPasscodeStoredInKeychain() {
+            self.signOut()
+        }
+        
+        if !isSignedIn(state: state) && ORKPasscodeViewController.isPasscodeStoredInKeychain() {
             self.signOut()
         }
         
@@ -92,7 +92,7 @@ open class RSAFApplicationDelegate: UIResponder, UIApplicationDelegate, ORKPassc
             
             if let vc = self.instantiateMainViewController(),
                 vc as? RSAFRootViewControllerProtocol != nil {
-                window.rootViewController = vc
+                self.transition(toRootViewController: vc, animated: true)
                 return
             }
             
@@ -100,7 +100,7 @@ open class RSAFApplicationDelegate: UIResponder, UIApplicationDelegate, ORKPassc
         else {
             if let vc = self.instantiateOnboardingViewController(),
                 vc as? RSAFRootViewControllerProtocol != nil {
-                window.rootViewController = vc
+                self.transition(toRootViewController: vc, animated: true)
                 return
             }
         }
@@ -133,7 +133,7 @@ open class RSAFApplicationDelegate: UIResponder, UIApplicationDelegate, ORKPassc
      Convenience method for transitioning to the given view controller as the main window
      rootViewController.
      */
-    open func transition(toRootViewController: UIViewController, animated: Bool) {
+    open func transition(toRootViewController: UIViewController, animated: Bool, completion: ((Bool)->Void)? = nil) {
         guard let window = self.window else { return }
         if (animated) {
             UIView.transition(with: window,
@@ -142,10 +142,11 @@ open class RSAFApplicationDelegate: UIResponder, UIApplicationDelegate, ORKPassc
                               animations: {
                                 window.rootViewController = toRootViewController
             },
-                              completion: nil)
+                              completion: completion)
         }
         else {
             window.rootViewController = toRootViewController
+            completion?(true)
         }
     }
     
@@ -317,12 +318,23 @@ open class RSAFApplicationDelegate: UIResponder, UIApplicationDelegate, ORKPassc
     }
     
     open func signOut() {
-        self.unsubscribeAndResetStore()
-        
-        if let store = self.reduxStore,
-            let state = store.state as? RSAFCombinedState {
-            self.showViewController(state: state)
-        }
+        let vc = UIViewController()
+        vc.view.backgroundColor = UIColor.white
+        self.transition(toRootViewController: vc, animated: true, completion: { finished in
+            
+            DispatchQueue.main.async {
+                
+                self.unsubscribeAndResetStore()
+                
+                if let store = self.reduxStore,
+                    let state = store.state as? RSAFCombinedState {
+                    self.showViewController(state: state)
+                }
+                
+            }
+            
+            
+        })
     }
     
     open func loadSchedule(filename: String) -> RSAFSchedule? {

@@ -31,7 +31,7 @@ open class RSAFRootViewController: UIViewController, RSAFRootViewControllerProto
     
     override open func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.view.backgroundColor = UIColor.white
         self.store?.subscribe(self)
     }
     

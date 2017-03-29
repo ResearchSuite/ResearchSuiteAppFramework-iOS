@@ -11,9 +11,13 @@ import ResearchKit
 
 open class RSAFKeychainStateManager: RSAFStateManager {
     
+    static private let keychainQueue = DispatchQueue(label: "keychainQueue")
+    
     static func setKeychainObject(_ object: NSSecureCoding, forKey key: String) {
         do {
-            try ORKKeychainWrapper.setObject(object, forKey: key)
+            try keychainQueue.sync {
+                try ORKKeychainWrapper.setObject(object, forKey: key)
+            }
         } catch let error {
             assertionFailure("Got error \(error) when setting \(key)")
         }
@@ -21,7 +25,9 @@ open class RSAFKeychainStateManager: RSAFStateManager {
     
     static func removeKeychainObject(forKey key: String) {
         do {
-            try ORKKeychainWrapper.removeObject(forKey: key)
+            try keychainQueue.sync {
+                try ORKKeychainWrapper.removeObject(forKey: key)
+            }
         } catch let error {
             assertionFailure("Got error \(error) when setting \(key)")
         }
@@ -29,7 +35,9 @@ open class RSAFKeychainStateManager: RSAFStateManager {
     
     static func clearKeychain() {
         do {
-            try ORKKeychainWrapper.resetKeychain()
+            try keychainQueue.sync {
+                try ORKKeychainWrapper.resetKeychain()
+            }
         } catch let error as NSError {
             print(error.localizedDescription)
         }
@@ -37,15 +45,18 @@ open class RSAFKeychainStateManager: RSAFStateManager {
     
     static func getKeychainObject(_ key: String) -> NSSecureCoding? {
         
-        var error: NSError?
-        let o = ORKKeychainWrapper.object(forKey: key, error: &error)
-        if error == nil {
-            return o
+        return keychainQueue.sync {
+            var error: NSError?
+            let o = ORKKeychainWrapper.object(forKey: key, error: &error)
+            if error == nil {
+                return o
+            }
+            else {
+                print("Got error \(error) when getting \(key). This may just be the key has not yet been set!!")
+                return nil
+            }
         }
-        else {
-            print("Got error \(error) when getting \(key). This may just be the key has not yet been set!!")
-            return nil
-        }
+        
     }
     
     static public func setValueInState(value: NSSecureCoding?, forKey: String) {

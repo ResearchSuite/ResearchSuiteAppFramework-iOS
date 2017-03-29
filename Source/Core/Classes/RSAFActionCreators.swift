@@ -36,6 +36,11 @@ open class RSAFActionCreators: NSObject {
         return QueueActivityAction(uuid: uuid, activityRun: activityRun)
     }
     
+    public static func queueActivity(fromScheduleItem scheduleItem: RSAFScheduleItem) -> Action {
+        let nestedActivityRun = RSAFActivityRun.create(from: scheduleItem)
+        return queueActivity(uuid: UUID(), activityRun: nestedActivityRun)
+    }
+    
     public static func completeActivity<T>(uuid: UUID, activityRun: RSAFActivityRun, taskResult: ORKTaskResult?) -> AsyncActionCreator<T> {
         return { (state, store, actionCreatorCallback) in
             

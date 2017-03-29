@@ -56,6 +56,8 @@ extension RSAFRootViewControllerProtocol {
             let taskResult: ORKTaskResult? = (reason == ORKTaskViewControllerFinishReason.completed) ?
                 taskViewController.result : nil
             
+            //why are we dispatching this action before we dismiss the VC?
+            //I think it's because this could affect state of VCs behind this one, so we don't want the updates to look janky
             store?.dispatch(RSAFActionCreators.completeActivity(uuid: uuid, activityRun: activityRun, taskResult: taskResult), callback: { (state) in
                 
                 vcSelf?.dismiss(animated: true, completion: completion)
