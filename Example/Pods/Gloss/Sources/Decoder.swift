@@ -30,6 +30,9 @@ Decodes JSON to objects.
 */
 public struct Decoder {
     
+    /// Default logger
+    public static var logger: Logger = GlossLogger()
+    
     /**
      Decodes JSON to a generic value.
     
@@ -37,7 +40,7 @@ public struct Decoder {
     
     - returns: Value decoded from JSON.
     */
-    public static func decode<T>(key: String, keyPathDelimiter: String = GlossKeyPathDelimiter, logger: Logger = GlossLogger()) -> (JSON) -> T? {
+    public static func decode<T>(key: String, keyPathDelimiter: String = GlossKeyPathDelimiter, logger: Logger = logger) -> (JSON) -> T? {
         return {
             json in
             
@@ -48,7 +51,9 @@ public struct Decoder {
             // If Gloss cannot determine the type being decoded, this generic decode function
             // will be used. At times, this will result in a value being present in the JSON
             // but Gloss returning nil - in this case, we log the failure.
-            if let _ = json.valueForKeyPath(keyPath: key, withDelimiter: keyPathDelimiter) {
+            if
+                let value = json.valueForKeyPath(keyPath: key, withDelimiter: keyPathDelimiter),
+                !(value is NSNull) {
                 logger.log(message: "Value found for key \"\(key)\" but decoding failed.")
             }
             

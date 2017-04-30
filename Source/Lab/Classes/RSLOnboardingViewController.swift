@@ -12,6 +12,9 @@ import ReSwift
 
 open class RSLOnboardingViewController: RSAFRootViewController {
 
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var titleImageView: UIImageView!
+    
     private var state: RSAFCombinedState?
     private var showingVC = false
     override open func viewDidLoad() {
@@ -19,8 +22,6 @@ open class RSLOnboardingViewController: RSAFRootViewController {
         
     }
     
-    
-
     override open func newState(state: RSAFCombinedState) {
         
         super.newState(state: state)
@@ -36,7 +37,16 @@ open class RSLOnboardingViewController: RSAFRootViewController {
             delegate.showViewController(state: state)
         }
         
+        guard let coreState = state.coreState as? RSAFCoreState else {
+            return
+        }
+        
+        self.titleLabel.text = RSAFCoreSelectors.getTitleLabelText(coreState)
+        self.titleImageView.image = RSAFCoreSelectors.getTitleImage(coreState)
+        
     }
+    
+    
     
     
     @IBAction func signInTapped(_ sender: Any) {
@@ -48,15 +58,19 @@ open class RSLOnboardingViewController: RSAFRootViewController {
         }
         
         if !delegate.isSignedIn(state: state),
-            let item = delegate.signInItem() {
-            let activityRun = RSAFActivityRun.create(from: item)
-            let action = QueueActivityAction(uuid: UUID(), activityRun: activityRun)
+            let item = delegate.signInItem(),
+            let taskBuilder = self.taskBuilder {
+//            let activityRun = RSAFActivityRun.create(from: item)
+//            let action = QueueActivityAction(uuid: UUID(), activityRun: activityRun)
+            let action = RSAFActionCreators.queueActivity(fromScheduleItem: item, taskBuilder: taskBuilder)
             store.dispatch(action)
         }
         else if !delegate.isResearcherDemographicsCompleted(state: state),
-            let item = delegate.researcherDemographics() {
-            let activityRun = RSAFActivityRun.create(from: item)
-            let action = QueueActivityAction(uuid: UUID(), activityRun: activityRun)
+            let item = delegate.researcherDemographics(),
+            let taskBuilder = self.taskBuilder  {
+//            let activityRun = RSAFActivityRun.create(from: item)
+//            let action = QueueActivityAction(uuid: UUID(), activityRun: activityRun)
+            let action = RSAFActionCreators.queueActivity(fromScheduleItem: item, taskBuilder: taskBuilder)
             store.dispatch(action)
         }
         

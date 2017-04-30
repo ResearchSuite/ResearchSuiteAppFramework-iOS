@@ -8,6 +8,8 @@
 
 import UIKit
 import ReSwift
+import ResearchSuiteResultsProcessor
+import ResearchSuiteTaskBuilder
 
 open class RSLLabReducer: RSAFBaseReducer {
     
@@ -30,18 +32,26 @@ open class RSLLabReducer: RSAFBaseReducer {
                 return RSLLabState.newState(
                     fromState: state,
                     sessionId: startSessionAction.sessionId,
+                    sessionLabel: startSessionAction.sessionLabel,
                     sessionStorage: [:],
-                    sessionTaskBuilder: startSessionAction.taskBuilderManager,
-                    sessionResultsProcessor: startSessionAction.resultsProcessorManager
+                    sessionTaskBuilder: startSessionAction.taskBuilder,
+                    sessionResultsProcessor: startSessionAction.resultsProcessor
                 )
                 
-            case let endSessionAction as EndSession:
+            case let resumeSessionAction as ResumeSession:
+                return RSLLabState.newState(
+                    fromState: state,
+                    sessionTaskBuilder: resumeSessionAction.taskBuilder,
+                    sessionResultsProcessor: resumeSessionAction.resultsProcessor
+                )
+                
+            case _ as EndSession:
                 return RSLLabState.newState(
                     fromState: state,
                     sessionId: nil as String?,
                     sessionStorage: [:],
-                    sessionTaskBuilder: nil as RSAFTaskBuilderManager?,
-                    sessionResultsProcessor: nil as RSAFResultsProcessorManager?
+                    sessionTaskBuilder: nil as RSTBTaskBuilder?,
+                    sessionResultsProcessor: nil as RSRPResultsProcessor?
                 )
                 
             case let setValueAction as SetValueInSessionStorage:

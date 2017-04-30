@@ -9,6 +9,8 @@
 import UIKit
 import ReSwift
 import ResearchKit
+import ResearchSuiteTaskBuilder
+import ResearchSuiteResultsProcessor
 
 struct SetLoggedInAction: Action {
     let loggedIn: Bool
@@ -17,6 +19,7 @@ struct SetLoggedInAction: Action {
 struct QueueActivityAction: Action {
     let uuid: UUID
     let activityRun: RSAFActivityRun
+    let taskBuilder: RSTBTaskBuilder
 }
 
 struct CompleteActivityAction: Action {
@@ -36,4 +39,25 @@ struct SetValueInExtensibleStorage: Action {
 
 struct ClearStore: Action {
     
+}
+
+struct Request: Action {
+    
+}
+
+struct Response: Action {
+    
+}
+
+struct SetTaskBuilder: Action {
+    let taskBuilder: RSTBTaskBuilder?
+}
+
+struct SetResultsProcessor: Action {
+    let resultsProcessor: RSRPResultsProcessor?
+}
+
+struct SetTitle: Action {
+    let titleLabelText: String?
+    let titleImage: UIImage?
 }

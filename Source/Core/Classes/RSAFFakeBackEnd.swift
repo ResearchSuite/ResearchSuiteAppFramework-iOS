@@ -11,6 +11,8 @@ import ResearchSuiteResultsProcessor
 
 public class RSAFFakeBackEnd: RSRPBackEnd {
     
+    public init(){}
+    
     public func add(intermediateResult: RSRPIntermediateResult) {
         
     }

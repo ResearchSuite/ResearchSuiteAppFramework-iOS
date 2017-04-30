@@ -28,10 +28,11 @@ open class RSAFApplicationDelegate: UIResponder, UIApplicationDelegate, ORKPassc
     
     //the following are subscribers
     var persistenceManager: RSAFCombinedPersistentStoreSubscriber?
-    var extensibleStateManager: RSAFExtensibleStateManager?
+    public var extensibleStateManager: RSAFExtensibleStateManager?
     
-    open var taskBuilderManager: RSAFTaskBuilderManager?
-    open var resultsProcessorManager: RSAFResultsProcessorManager?
+//    open var taskBuilderManager: RSAFTaskBuilderManager?
+//    open var resultsProcessorManager: RSAFResultsProcessorManager?
+//    open var resultsProcessor: RSRPResultsProcessor?
     
     open func application(_ application: UIApplication, willFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -51,6 +52,7 @@ open class RSAFApplicationDelegate: UIResponder, UIApplicationDelegate, ORKPassc
         
         if let store = self.reduxStore,
             let state = store.state as? RSAFCombinedState {
+            
             self.showViewController(state: state)
         }
 
@@ -133,16 +135,21 @@ open class RSAFApplicationDelegate: UIResponder, UIApplicationDelegate, ORKPassc
      Convenience method for transitioning to the given view controller as the main window
      rootViewController.
      */
-    open func transition(toRootViewController: UIViewController, animated: Bool, completion: ((Bool)->Void)? = nil) {
+    open func transition(toRootViewController: UIViewController, animated: Bool, completion: ((Bool) -> Swift.Void)? = nil) {
         guard let window = self.window else { return }
         if (animated) {
-            UIView.transition(with: window,
-                              duration: 0.6,
-                              options: UIViewAnimationOptions.transitionCrossDissolve,
-                              animations: {
-                                window.rootViewController = toRootViewController
-            },
-                              completion: completion)
+            let snapshot:UIView = (self.window?.snapshotView(afterScreenUpdates: true))!
+            toRootViewController.view.addSubview(snapshot);
+            
+            self.window?.rootViewController = toRootViewController;
+            
+            UIView.animate(withDuration: 0.3, animations: {() in
+                snapshot.layer.opacity = 0;
+            }, completion: {
+                (value: Bool) in
+                snapshot.removeFromSuperview()
+                completion?(value)
+            })
         }
         else {
             window.rootViewController = toRootViewController
@@ -237,17 +244,30 @@ open class RSAFApplicationDelegate: UIResponder, UIApplicationDelegate, ORKPassc
     }
     
     
-    open func createResultsProcessorManager(store: Store<RSAFCombinedState>) -> RSAFResultsProcessorManager {
-        return RSAFResultsProcessorManager(store: store, backEnd: RSAFFakeBackEnd())
-    }
+//    open func resultsProcessorFrontEndTransformers() -> [RSRPFrontEndTransformer.Type] {
+//        return []
+//    }
+//    
+//    open func resultsProcessorBackEnds() -> [RSRPBackEnd] {
+//        return [
+//            RSAFFakeBackEnd()
+//        ]
+//    }
+//    
+//    open func createResultsProcessor() -> RSRPResultsProcessor {
+//        return RSRPResultsProcessor(
+//            frontEndTransformers: self.resultsProcessorFrontEndTransformers(),
+//            backEnds: self.resultsProcessorBackEnds()
+//        )
+//    }
     
     open func createExtensibleStateManager(store: Store<RSAFCombinedState>) -> RSAFExtensibleStateManager {
         return RSAFExtensibleStateManager(store: store)
     }
     
-    open func createTaskBuilderManager(stateHelper: RSTBStateHelper) -> RSAFTaskBuilderManager {
-        return RSAFTaskBuilderManager(stateHelper: stateHelper)
-    }
+//    open func createTaskBuilderManager(stateHelper: RSTBStateHelper) -> RSAFTaskBuilderManager {
+//        return RSAFTaskBuilderManager(stateHelper: stateHelper)
+//    }
     
     open func loadCombinedReducer() -> RSAFCombinedReducer {
         return RSAFCombinedReducer(
@@ -265,13 +285,18 @@ open class RSAFApplicationDelegate: UIResponder, UIApplicationDelegate, ORKPassc
         )
     }
     
+    open func initialDispatch(store: Store<RSAFCombinedState>) {
+        
+        store.dispatch(RSAFActionCreators.setTitleInfo(titleLabelText: self.titleLabelText, titleImage: self.titleImage))
+        
+    }
+    
     open func initializeStoreAndSubscribe() {
         
         let store = initializeStore()
         self.subscribeToStore(store: store)
         
-        
-        
+        self.initialDispatch(store: store)
     }
     
     open func initializeStore() -> Store<RSAFCombinedState> {
@@ -284,14 +309,14 @@ open class RSAFApplicationDelegate: UIResponder, UIApplicationDelegate, ORKPassc
         let storeManager: RSAFReduxManager = RSAFReduxManager(initialState: persistedState, reducer: combinedReducer)
         
         let extensibleStateHelper = self.createExtensibleStateManager(store: storeManager.store)
-        let taskBuilderManager  = self.createTaskBuilderManager(stateHelper: extensibleStateHelper)
-        let resultsProcessorManager = self.createResultsProcessorManager(store: storeManager.store)
+//        let taskBuilderManager  = self.createTaskBuilderManager(stateHelper: extensibleStateHelper)
+//        let resultsProcessor = self.createResultsProcessor()
         
         self.reduxManager = storeManager
         self.extensibleStateManager = extensibleStateHelper
         self.persistenceManager = persistenceManager
-        self.taskBuilderManager = taskBuilderManager
-        self.resultsProcessorManager = resultsProcessorManager
+//        self.taskBuilderManager = taskBuilderManager
+//        self.resultsProcessor = resultsProcessor
 
         return storeManager.store
         
@@ -308,8 +333,8 @@ open class RSAFApplicationDelegate: UIResponder, UIApplicationDelegate, ORKPassc
         
         self.reduxManager = nil
         self.persistenceManager = nil
-        self.taskBuilderManager = nil
-        self.resultsProcessorManager = nil
+//        self.taskBuilderManager = nil
+//        self.resultsProcessor = nil
         
         RSAFKeychainStateManager.clearKeychain()
         
@@ -343,5 +368,53 @@ open class RSAFApplicationDelegate: UIResponder, UIApplicationDelegate, ORKPassc
         }
         
         return RSAFSchedule(json: json)
+    }
+    
+    open class var stepGeneratorServices: [RSTBStepGenerator] {
+        return [
+            RSTBInstructionStepGenerator(),
+            RSTBTextFieldStepGenerator(),
+            RSTBIntegerStepGenerator(),
+            RSTBDecimalStepGenerator(),
+            RSTBTimePickerStepGenerator(),
+            RSTBFormStepGenerator(),
+            RSTBDatePickerStepGenerator(),
+            RSTBSingleChoiceStepGenerator(),
+            RSTBMultipleChoiceStepGenerator(),
+            RSTBBooleanStepGenerator(),
+            RSTBPasscodeStepGenerator(),
+            RSTBScaleStepGenerator()
+        ]
+    }
+    
+    open class var answerFormatGeneratorServices:  [RSTBAnswerFormatGenerator] {
+        return [
+            RSTBTextFieldStepGenerator(),
+            RSTBIntegerStepGenerator(),
+            RSTBDecimalStepGenerator(),
+            RSTBTimePickerStepGenerator(),
+            RSTBDatePickerStepGenerator(),
+            RSTBScaleStepGenerator()
+        ]
+    }
+    
+    open class var elementGeneratorServices: [RSTBElementGenerator] {
+        return [
+            RSTBElementListGenerator(),
+            RSTBElementFileGenerator(),
+            RSTBElementSelectorGenerator()
+        ]
+    }
+    
+    open class var resultsProcessorFrontEndTransformers: [RSRPFrontEndTransformer.Type] {
+        return []
+    }
+    
+    open var titleLabelText: String? {
+        return nil
+    }
+    
+    open var titleImage: UIImage? {
+        return nil
     }
 }

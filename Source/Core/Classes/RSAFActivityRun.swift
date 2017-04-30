@@ -17,12 +17,12 @@ public struct RSAFActivityRun {
     let identifier: String
     let activity: JsonElement
     let resultTransforms: [RSRPResultTransform]?
-    var onCompletionActionCreators: [(UUID, RSAFActivityRun, ORKTaskResult?) -> Action?]?
+    var onCompletionActionCreators: [(UUID, RSAFActivityRun, ORKTaskResult?) -> Dispatchable<RSAFCombinedState>?]?
     
     public init(identifier: String,
          activity: JsonElement,
          resultTransforms: [RSRPResultTransform]?,
-         onCompletionActionCreators: [(UUID, RSAFActivityRun, ORKTaskResult?) -> Action?]? = nil
+         onCompletionActionCreators: [(UUID, RSAFActivityRun, ORKTaskResult?) -> Dispatchable<RSAFCombinedState>?]? = nil
         ) {
         
         self.identifier = identifier

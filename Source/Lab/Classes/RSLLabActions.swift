@@ -7,6 +7,8 @@
 //
 
 import ReSwift
+import ResearchSuiteResultsProcessor
+import ResearchSuiteTaskBuilder
 
 struct MarkResearcherDemographicsCompleted: Action {
     let completed: Bool
@@ -14,8 +16,14 @@ struct MarkResearcherDemographicsCompleted: Action {
 
 struct StartSession: Action {
     let sessionId: String
-    let taskBuilderManager: RSAFTaskBuilderManager
-    let resultsProcessorManager: RSAFResultsProcessorManager
+    let sessionLabel: String?
+    let taskBuilder: RSTBTaskBuilder
+    let resultsProcessor: RSRPResultsProcessor
+}
+
+struct ResumeSession: Action {
+    let taskBuilder: RSTBTaskBuilder
+    let resultsProcessor: RSRPResultsProcessor
 }
 
 //struct SetSessionId: Action {

@@ -49,8 +49,10 @@ open class RSAFCoreReducer: RSAFBaseReducer {
     public static let reducer = CombinedReducer([
         AppStateReducer(),
         ActivityQueueReducer(),
-        ResultsQueueReducer(),
-        ExtensibleStorageReducer()
+//        ResultsQueueReducer(),
+        ExtensibleStorageReducer(),
+        RSReducer(),
+        TitleReducer()
     ])
     
     open override func handleAction(action: Action, state: RSAFBaseState?) -> RSAFBaseState {
@@ -82,11 +84,11 @@ open class RSAFCoreReducer: RSAFBaseReducer {
             switch action {
                 
             case let queueActivityAction as QueueActivityAction:
-                let newActivityQueue = state.activityQueue + [(queueActivityAction.uuid, queueActivityAction.activityRun)]
+                let newActivityQueue = state.activityQueue + [(queueActivityAction.uuid, queueActivityAction.activityRun, queueActivityAction.taskBuilder)]
                 return RSAFCoreState.newState(fromState: state, activityQueue: newActivityQueue)
                 
             case let completeActivityAction as CompleteActivityAction:
-                let newActivityQueue = state.activityQueue.filter({ (uuid: UUID, _) -> Bool in
+                let newActivityQueue = state.activityQueue.filter({ (uuid: UUID, _, _) -> Bool in
                     return uuid != completeActivityAction.uuid
                 })
                 return RSAFCoreState.newState(fromState: state, activityQueue: newActivityQueue)
@@ -99,39 +101,60 @@ open class RSAFCoreReducer: RSAFBaseReducer {
         
     }
     
-    final class ResultsQueueReducer: RSAFBaseReducer {
-        
+    final class TitleReducer: RSAFBaseReducer {
         open override func handleAction(action: Action, state: RSAFBaseState?) -> RSAFBaseState {
+            
             let state = (state ?? RSAFCoreState.empty()) as! RSAFCoreState
             
             switch action {
                 
-            case let completeActivityAction as CompleteActivityAction:
-                if let taskResult = completeActivityAction.taskResult {
-                    let newResultsQueue = state.resultsQueue + [(completeActivityAction.uuid, completeActivityAction.activityRun, taskResult)]
-                    return RSAFCoreState.newState(
-                        fromState: state,
-                        resultsQueue: newResultsQueue
-                    )
-                }
-                else {
-                    return state
-                }
-                
-            case let resultsProcessedAction as ResultsProcessedAction:
-                let newResultsQueue = state.resultsQueue.filter({ (uuid: UUID, _, _) -> Bool in
-                    return uuid != resultsProcessedAction.uuid
-                })
+            case let setTitle as SetTitle:
                 return RSAFCoreState.newState(
                     fromState: state,
-                    resultsQueue: newResultsQueue
+                    titleLabelText: setTitle.titleLabelText,
+                    titleImage: setTitle.titleImage
                 )
-                
+
             default:
                 return state
             }
+            
         }
     }
+    
+//    final class ResultsQueueReducer: RSAFBaseReducer {
+//        
+//        open override func handleAction(action: Action, state: RSAFBaseState?) -> RSAFBaseState {
+//            let state = (state ?? RSAFCoreState.empty()) as! RSAFCoreState
+//            
+//            switch action {
+//                
+//            case let completeActivityAction as CompleteActivityAction:
+//                if let taskResult = completeActivityAction.taskResult {
+//                    let newResultsQueue = state.resultsQueue + [(completeActivityAction.uuid, completeActivityAction.activityRun, taskResult)]
+//                    return RSAFCoreState.newState(
+//                        fromState: state,
+//                        resultsQueue: newResultsQueue
+//                    )
+//                }
+//                else {
+//                    return state
+//                }
+//                
+//            case let resultsProcessedAction as ResultsProcessedAction:
+//                let newResultsQueue = state.resultsQueue.filter({ (uuid: UUID, _, _) -> Bool in
+//                    return uuid != resultsProcessedAction.uuid
+//                })
+//                return RSAFCoreState.newState(
+//                    fromState: state,
+//                    resultsQueue: newResultsQueue
+//                )
+//                
+//            default:
+//                return state
+//            }
+//        }
+//    }
     
     final class ExtensibleStorageReducer: RSAFBaseReducer {
         open override func handleAction(action: Action, state: RSAFBaseState?) -> RSAFBaseState {
@@ -155,6 +178,30 @@ open class RSAFCoreReducer: RSAFBaseReducer {
                 return RSAFCoreState.newState(
                     fromState: state,
                     extensibleStorage: extensibleStorageDict
+                )
+                
+            default:
+                return state
+            }
+        }
+    }
+    
+    final class RSReducer: RSAFBaseReducer {
+        open override func handleAction(action: Action, state: RSAFBaseState?) -> RSAFBaseState {
+            let state = (state ?? RSAFCoreState.empty()) as! RSAFCoreState
+            
+            switch action {
+                
+            case let setTaskBuilder as SetTaskBuilder:
+                return RSAFCoreState.newState(
+                    fromState: state,
+                    taskBuilder: setTaskBuilder.taskBuilder
+                )
+                
+            case let setResultsProcessor as SetResultsProcessor:
+                return RSAFCoreState.newState(
+                    fromState: state,
+                    resultsProcessor: setResultsProcessor.resultsProcessor
                 )
                 
             default:

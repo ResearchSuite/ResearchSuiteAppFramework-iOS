@@ -8,6 +8,8 @@
 
 import UIKit
 import ResearchKit
+import ResearchSuiteTaskBuilder
+import ResearchSuiteResultsProcessor
 
 public class RSAFCoreSelectors: NSObject {
     
@@ -26,9 +28,25 @@ public class RSAFCoreSelectors: NSObject {
         }
     }
     
-    public static func getResultsQueue(_ state: RSAFCoreState) -> [(UUID, RSAFActivityRun, ORKTaskResult)] {
-        return state.resultsQueue
+    public static func getTaskBuilder(_ state: RSAFCoreState) -> RSTBTaskBuilder? {
+        return state.taskBuilder
     }
+    
+    public static func getResultsProcessor(_ state: RSAFCoreState) -> RSRPResultsProcessor? {
+        return state.resultsProcessor
+    }
+    
+    public static func getTitleLabelText(_ state: RSAFCoreState) -> String? {
+        return state.titleLabelText
+    }
+    
+    public static func getTitleImage(_ state: RSAFCoreState) -> UIImage? {
+        return state.titleImage
+    }
+    
+//    public static func getResultsQueue(_ state: RSAFCoreState) -> [(UUID, RSAFActivityRun, ORKTaskResult)] {
+//        return state.resultsQueue
+//    }
     
 
 }

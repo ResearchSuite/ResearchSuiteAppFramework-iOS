@@ -17,6 +17,8 @@ open class RSAFRootViewController: UIViewController, RSAFRootViewControllerProto
     
     private var state: RSAFCombinedState?
     
+    public var taskBuilder: RSTBTaskBuilder?
+    
     public var contentHidden = false {
         didSet {
             guard contentHidden != oldValue && isViewLoaded else { return }
@@ -44,10 +46,10 @@ open class RSAFRootViewController: UIViewController, RSAFRootViewControllerProto
         self.state = state
         if self.presentedActivity == nil,
             let coreState = state.coreState as? RSAFCoreState,
-            let (uuid, activityRun) = coreState.activityQueue.first {
+            let (uuid, activityRun, taskBuilder) = coreState.activityQueue.first {
             
             self.presentedActivity = uuid
-            self.runActivity(uuid: uuid, activityRun: activityRun, completion: { [weak self] in
+            self.runActivity(uuid: uuid, activityRun: activityRun, taskBuilder: taskBuilder, completion: { [weak self] in
                 self?.presentedActivity = nil
                 
                 //potentially launch new activity
@@ -68,13 +70,13 @@ open class RSAFRootViewController: UIViewController, RSAFRootViewControllerProto
         return delegate.reduxStore
     }
     
-    open var taskBuilder: RSTBTaskBuilder? {
-        guard let delegate = UIApplication.shared.delegate as? RSAFApplicationDelegate else {
-            return nil
-        }
-        
-        return delegate.taskBuilderManager?.rstb
-    }
+//    open var taskBuilder: RSTBTaskBuilder? {
+//        guard let delegate = UIApplication.shared.delegate as? RSAFApplicationDelegate else {
+//            return nil
+//        }
+//        
+//        return delegate.taskBuilderManager?.rstb
+//    }
     
     
 

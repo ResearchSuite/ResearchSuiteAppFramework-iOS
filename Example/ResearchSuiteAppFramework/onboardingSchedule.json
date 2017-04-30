@@ -70,10 +70,22 @@
       "title": "End Session",
       "guid": "end_session-1",
       "activity": {
-        "identifier": "end_session_notes",
-        "type": "textfield",
-        "title": "Notes",
-        "multipleLines": true
+        "type": "elementList",
+        "identifier": "endSession",
+        "elements": [
+          {
+            "identifier": "end_session_notes",
+            "type": "textfield",
+            "title": "Notes",
+            "multipleLines": true
+          },
+          {
+            "identifier": "handover",
+            "type": "instruction",
+            "title": "Session Completed!",
+            "text": "Please hand the device over to the researcher"
+          }
+        ]
       },
       "resultTransforms": []
     }

@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Yyl-yz-jSt">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="Yyl-yz-jSt">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -26,7 +27,7 @@
             </objects>
             <point key="canvasLocation" x="-1684" y="603"/>
         </scene>
-        <!--New Session-->
+        <!--Home-->
         <scene sceneID="kuH-Xw-RXH">
             <objects>
                 <viewController id="4MZ-dS-Jze" customClass="RSLSessionViewController" customModule="ResearchSuiteAppFramework" sceneMemberID="viewController">
@@ -38,33 +39,54 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="imU-dJ-QYC">
-                                <rect key="frame" x="141" y="621" width="92" height="30"/>
-                                <state key="normal" title="Start Session"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="imU-dJ-QYC" customClass="RSAFBorderedButton" customModule="ResearchSuiteAppFramework">
+                                <rect key="frame" x="107.5" y="575" width="160" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="160" id="kAf-TA-a4s"/>
+                                    <constraint firstAttribute="height" constant="60" id="xH4-Vz-Seq"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                <state key="normal" title="Begin Session"/>
                                 <connections>
                                     <action selector="startSession:" destination="4MZ-dS-Jze" eventType="touchUpInside" id="Q7e-eW-KLs"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5sm-2B-Fr7">
-                                <rect key="frame" x="157" y="575" width="60" height="30"/>
-                                <state key="normal" title="Sign Out"/>
-                                <connections>
-                                    <action selector="signOut:" destination="4MZ-dS-Jze" eventType="touchUpInside" id="aO2-NV-EQg"/>
-                                </connections>
-                            </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="xfO-oz-aFP">
+                                <rect key="frame" x="18.5" y="165" width="337.5" height="337.5"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="xfO-oz-aFP" secondAttribute="height" multiplier="1:1" id="LlH-LR-pXI"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RSuite Lab App" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="5Tk-3q-4PG">
+                                <rect key="frame" x="94.5" y="111" width="186" height="34"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="5Tk-3q-4PG" firstAttribute="centerX" secondItem="xk8-6R-ZUS" secondAttribute="centerX" id="25I-Yr-AFK"/>
+                            <constraint firstItem="xfO-oz-aFP" firstAttribute="centerX" secondItem="xk8-6R-ZUS" secondAttribute="centerX" id="2k0-kf-rNr"/>
                             <constraint firstItem="imU-dJ-QYC" firstAttribute="centerX" secondItem="xk8-6R-ZUS" secondAttribute="centerX" id="FAp-lg-g0S"/>
-                            <constraint firstItem="5sm-2B-Fr7" firstAttribute="centerX" secondItem="xk8-6R-ZUS" secondAttribute="centerX" id="N3m-LB-k7R"/>
-                            <constraint firstItem="Eh3-ED-3nP" firstAttribute="top" secondItem="imU-dJ-QYC" secondAttribute="bottom" constant="16" id="qGc-bD-iS8"/>
-                            <constraint firstItem="imU-dJ-QYC" firstAttribute="top" secondItem="5sm-2B-Fr7" secondAttribute="bottom" constant="16" id="sKY-PF-wTX"/>
+                            <constraint firstItem="xfO-oz-aFP" firstAttribute="top" secondItem="5Tk-3q-4PG" secondAttribute="bottom" constant="20" id="GxL-5H-Fqz"/>
+                            <constraint firstItem="xfO-oz-aFP" firstAttribute="centerY" secondItem="xk8-6R-ZUS" secondAttribute="centerY" id="I5A-Kn-Hja"/>
+                            <constraint firstItem="Eh3-ED-3nP" firstAttribute="top" secondItem="imU-dJ-QYC" secondAttribute="bottom" constant="32" id="NOd-4L-o1B"/>
+                            <constraint firstItem="xfO-oz-aFP" firstAttribute="width" secondItem="xk8-6R-ZUS" secondAttribute="width" multiplier="0.9" id="Qoj-wP-x7Q"/>
                         </constraints>
                     </view>
-                    <navigationItem key="navigationItem" title="New Session" id="Jr6-Wx-yNY"/>
+                    <navigationItem key="navigationItem" title="Home" id="Jr6-Wx-yNY">
+                        <barButtonItem key="rightBarButtonItem" title="Sign Out" id="WEX-3f-C1E">
+                            <connections>
+                                <action selector="signOut:" destination="4MZ-dS-Jze" id="mfh-5y-lqI"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
-                        <outlet property="signOutButton" destination="5sm-2B-Fr7" id="s5H-Bf-28G"/>
+                        <outlet property="signOutButton" destination="WEX-3f-C1E" id="KNn-EB-GyN"/>
                         <outlet property="startSessionButton" destination="imU-dJ-QYC" id="0Uj-7a-sPu"/>
+                        <outlet property="titleImageView" destination="xfO-oz-aFP" id="fK6-DQ-Ynu"/>
+                        <outlet property="titleLabel" destination="5Tk-3q-4PG" id="VGk-I0-ewm"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XAD-Be-YzS" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -87,11 +109,11 @@
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="33V-se-Tp6">
+                                        <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="33V-se-Tp6">
                                             <rect key="frame" x="16" y="16" width="28" height="28"/>
                                             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </view>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cEL-gi-UjO">
+                                        <imageView hidden="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="cEL-gi-UjO">
                                             <rect key="frame" x="16" y="16" width="28" height="28"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="28" id="5cj-pc-lMi"/>

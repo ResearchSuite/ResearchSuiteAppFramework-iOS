@@ -4,6 +4,222 @@
   "title": "Activities",
   "guid": "impusivity-activities-123",
   "items": [
+
+    {
+      "type": "recurring",
+      "identifier": "multichoice",
+      "title": "Multi Choice Dev",
+      "guid": "multichoice-1",
+      "activity": {
+        "type": "elementList",
+        "identifier": "demographics_list",
+        "elements": [
+          {
+            "identifier": "formSample",
+            "type": "form",
+            "title": "Form Title",
+            "text": "Form Text",
+            "items": [
+              {
+                "identifier": "age",
+                "type": "numericInteger",
+                "text": "What is your age?",
+                "range": {
+                  "min": 18,
+                  "max": 99,
+                  "unitLabel": "years"
+                },
+                "optional": false
+              },
+              {
+                "identifier": "zip_code",
+                "type": "textfield",
+                "text": "What is your zip code?",
+                "validationRegex": "^[0-9]{5}$",
+                "invalidMessage": "Please enter a valid zip code.",
+                "optional": false
+              },
+              {
+                "identifier": "string",
+                "type": "textfield",
+                "text": "Test String",
+                "maximumLength": 5,
+                "optional": false
+              }
+            ]
+          },
+          {
+            "identifier": "gender_regular",
+            "title": "Gender",
+            "type": "singleChoiceText",
+            "text": "What is your gender?",
+            "items": [
+              {
+                "prompt": "Female",
+                "detailText": "Female",
+                "value": "female"
+              },
+              {
+                "prompt": "Male",
+                "value": "male"
+              },
+              {
+                "prompt": "Transgender",
+                "value": "transgender"
+              },
+              {
+                "prompt": "Other",
+                "value": "other"
+              }
+            ]
+          },
+          {
+            "identifier": "gender_regular_multi",
+            "title": "Gender",
+            "type": "multipleChoiceText",
+            "text": "What is your gender?",
+            "items": [
+              {
+                "prompt": "Female",
+                "detailText": "Female",
+                "value": "female"
+              },
+              {
+                "prompt": "Male",
+                "value": "male"
+              },
+              {
+                "prompt": "Transgender",
+                "value": "transgender"
+              },
+              {
+                "prompt": "Other",
+                "value": "other"
+              }
+            ]
+          },
+          {
+            "identifier": "gender_enhanced",
+            "type": "enhancedSingleChoiceText",
+            "title": "Gender",
+            "text": "What is your gender?",
+            "items": [
+              {
+                "prompt": "Female",
+                "value": "female",
+                "auxiliaryItem": {
+                  "identifier": "zip_code",
+                  "type": "textfield",
+                  "text": "Specify:",
+                  "validationRegex": "^[0-9]{5}$",
+                  "invalidMessage": "Please enter a valid zip code.",
+                  "optional": false
+                }
+              },
+              {
+                "prompt": "Male",
+                "value": "male",
+                "auxiliaryItem": {
+                  "identifier": "age",
+                  "type": "numericInteger",
+                  "text": "What is your age?",
+                  "range": {
+                    "min": 18,
+                    "max": 99,
+                    "unitLabel": "years"
+                  }
+                }
+              },
+              {
+                "prompt": "Transgender",
+                "value": "transgender",
+                "auxiliaryItem": {
+                  "identifier": "age_decimal",
+                  "type": "numericDecimal",
+                  "text": "What is your age?"
+                }
+              },
+              {
+                "prompt": "Other",
+                "value": "other",
+                "auxiliaryItem": {
+                  "identifier": "string",
+                  "type": "textfield",
+                  "text": "Test String",
+                  "maximumLength": 5
+                }
+              }
+            ]
+          },
+          {
+            "identifier": "gender_multiple",
+            "type": "enhancedMultipleChoiceText",
+            "title": "Gender",
+            "text": "What is your gender?",
+            "items": [
+              {
+                "prompt": "Female",
+                "value": "female",
+                "auxiliaryItem": {
+                  "identifier": "zip_code",
+                  "type": "textfield",
+                  "text": "Specify:",
+                  "validationRegex": "^[0-9]{5}$",
+                  "invalidMessage": "Please enter a valid zip code.",
+                  "optional": false
+                }
+              },
+              {
+                "prompt": "Male",
+                "value": "male",
+                "auxiliaryItem": {
+                  "identifier": "age",
+                  "type": "numericInteger",
+                  "text": "What is your age?",
+                  "range": {
+                    "min": 18,
+                    "max": 99,
+                    "unitLabel": "years"
+                  },
+                  "optional": false
+                }
+              },
+              {
+                "prompt": "Transgender",
+                "value": "transgender",
+                "auxiliaryItem": {
+                  "identifier": "age_decimal",
+                  "type": "numericDecimal",
+                  "text": "What is your age?",
+                  "optional": true
+                }
+              },
+              {
+                "prompt": "Other",
+                "value": "other"
+              }
+            ]
+          },
+          {
+            "type": "RSQuestionTableViewController",
+            "identifier": "multipleChoiceTest1",
+            "title": "Multiple Choice",
+            "text": "This is much longer multiple choice text. How does this look?"
+          },
+          {
+            "type": "RSQuestionTableViewController",
+            "identifier": "multipleChoiceTest2",
+            "text": "This is much longer multiple choice text. How does this look?"
+          },
+          {
+            "type": "RSQuestionTableViewController",
+            "identifier": "multipleChoiceTest3",
+            "title": "Multiple Choice",
+          }
+        ]
+      },
+      "resultTransforms": []
+    },
     {
       "type": "recurring",
       "identifier": "go-no-go-stable",

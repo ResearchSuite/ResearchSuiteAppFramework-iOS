@@ -9,6 +9,8 @@
 import UIKit
 import ReSwift
 import ResearchSuiteTaskBuilder
+import ResearchSuiteResultsProcessor
+import ResearchKit
 
 open class RSLSessionViewController: UIViewController, StoreSubscriber {
     
@@ -16,7 +18,20 @@ open class RSLSessionViewController: UIViewController, StoreSubscriber {
     
     @IBOutlet weak var startSessionButton: UIButton!
     
-    @IBOutlet weak var signOutButton: UIButton!
+    @IBOutlet weak var signOutButton: UIBarButtonItem!
+    
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var titleImageView: UIImageView!
+    
+    var activitiesTVC: RSAFActivityTableViewController?
+    
+    var sessionTaskBuilder: RSTBTaskBuilder? {
+        didSet {
+            self.activitiesTVC?.taskBuilder = sessionTaskBuilder
+        }
+    }
+    
+    var globalTaskBuilder: RSTBTaskBuilder?
     
     open var store: Store<RSAFCombinedState>? {
         
@@ -39,12 +54,38 @@ open class RSLSessionViewController: UIViewController, StoreSubscriber {
                 let schedule = delegate.participantSchedule() {
                 activitiesTVC.store = self.store
                 activitiesTVC.schedule = schedule
+                
+                let dispatchableCreator: (UUID, RSAFActivityRun, ORKTaskResult?) -> Dispatchable<RSAFCombinedState>? = { uuid, activityRun, result in
+                    
+                    if let result = result {
+                        return RSAFActionCreators.processResults(
+                            uuid: uuid,
+                            activityRun: activityRun,
+                            taskResult: result,
+                            resultsProcessorSelector: { (combinedState) -> RSRPResultsProcessor? in
+                            if let labState = combinedState.middlewareState as? RSLLabState {
+                                return RSLLabSelectors.getSessionResultsProcessor(labState)
+                            }
+                            
+                            return nil
+                        })
+                    }
+                    else {
+                        return nil
+                    }
+                }
+                
+                activitiesTVC.resultsDispatchableFunc = dispatchableCreator
+                activitiesTVC.taskBuilder = self.sessionTaskBuilder
+                
                 self.navigationController?.pushViewController(activitiesTVC, animated: true)
                 
                 activitiesTVC.navigationItem.hidesBackButton = true
-                let endSessionButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(self.endSession))
+
+                let endSessionButton = UIBarButtonItem(title: "End Session", style: .done, target: self, action: #selector(self.endSession))
                 
                 activitiesTVC.navigationItem.setRightBarButton(endSessionButton, animated: true)
+                self.activitiesTVC = activitiesTVC
             }
         })
         
@@ -71,11 +112,9 @@ open class RSLSessionViewController: UIViewController, StoreSubscriber {
         assert(self.sessionId.get() == nil)
         if let delegate = UIApplication.shared.delegate as? RSLApplicationDelegate,
             let item = delegate.startSessionItem(),
-            let store = delegate.reduxStore {
-            
-            let activityRun = RSAFActivityRun.create(from: item)
-            
-            let action = QueueActivityAction(uuid: UUID(), activityRun: activityRun)
+            let store = delegate.reduxStore,
+            let taskBuilder = self.globalTaskBuilder {
+            let action = RSAFActionCreators.queueActivity(fromScheduleItem: item, taskBuilder: taskBuilder)
             store.dispatch(action)
             
         }
@@ -93,19 +132,23 @@ open class RSLSessionViewController: UIViewController, StoreSubscriber {
     
     open func newState(state: RSAFCombinedState) {
         
-        let sessionId: String? = {
-            
-            guard let labState = state.middlewareState as? RSLLabState else {
-                return nil
-            }
-            
-            return RSLLabSelectors.getSessionId(labState)
-        }()
         
+        guard let labState = state.middlewareState as? RSLLabState,
+            let coreState = state.coreState as? RSAFCoreState else {
+            return
+        }
+        
+        let sessionId: String? = RSLLabSelectors.getSessionId(labState)
         self.sessionId.set(value: sessionId)
-        
         self.startSessionButton.isEnabled = sessionId == nil
         self.signOutButton.isEnabled = sessionId == nil
+        
+        self.sessionTaskBuilder = RSLLabSelectors.getSessionTaskBuilder(labState)
+        
+        self.globalTaskBuilder = RSAFCoreSelectors.getTaskBuilder(coreState)
+        
+        self.titleLabel.text = RSAFCoreSelectors.getTitleLabelText(coreState)
+        self.titleImageView.image = RSAFCoreSelectors.getTitleImage(coreState)
         
     }
     
@@ -118,22 +161,33 @@ open class RSLSessionViewController: UIViewController, StoreSubscriber {
         let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
         alert.addAction(cancelAction)
         
-        weak var nav: UINavigationController? = self.navigationController
+//        weak var nav: UINavigationController? = self.navigationController
         
         let endSessionAction = UIAlertAction(title: "End Session", style: .destructive, handler: { _ in
-            if let store = self.store {
-                let asyncActionCreator: RSAFActionCreators.AsyncActionCreator<RSAFCombinedState> = { (state, store, actionCreatorCallback) in
-                    let endSessionAction = RSLLabActionCreators.endCurrentSession()
-                    actionCreatorCallback( { (store, state) in
-                        return endSessionAction
-                    })
-                    
-                }
+            assert(self.sessionId.get() != nil)
+            if let delegate = UIApplication.shared.delegate as? RSLApplicationDelegate,
+                let item = delegate.endSessionItem(),
+                let store = delegate.reduxStore,
+                let taskBuilder = self.sessionTaskBuilder
+            {
+                let action = RSAFActionCreators.queueActivity(fromScheduleItem: item, taskBuilder: taskBuilder)
+                store.dispatch(action)
                 
-                store.dispatch(asyncActionCreator, callback: { (state) in
-                    nav?.popViewController(animated: true)
-                })
             }
+            
+//            if let store = self.store {
+//                let asyncActionCreator: RSAFActionCreators.AsyncActionCreator = { (state, store, actionCreatorCallback) in
+//                    let endSessionAction = RSLLabActionCreators.endCurrentSession()
+//                    actionCreatorCallback( { (store, state) in
+//                        return endSessionAction
+//                    })
+//                    
+//                }
+//                
+//                store.dispatch(asyncActionCreator, callback: { (state) in
+//                    nav?.popViewController(animated: true)
+//                })
+//            }
         })
         alert.addAction(endSessionAction)
         

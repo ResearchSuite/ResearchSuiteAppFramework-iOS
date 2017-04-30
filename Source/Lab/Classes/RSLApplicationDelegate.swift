@@ -58,14 +58,18 @@ open class RSLApplicationDelegate: RSAFApplicationDelegate {
         
         if !isSignedIn(state: state) || !isResearcherDemographicsCompleted(state: state) {
             if let vc = self.instantiateOnboardingViewController(),
-                vc as? RSAFRootViewControllerProtocol != nil {
+                var rvc = vc as? RSAFRootViewControllerProtocol,
+                let coreState = state.coreState as? RSAFCoreState {
+                rvc.taskBuilder = RSAFCoreSelectors.getTaskBuilder(coreState)
                 self.transition(toRootViewController: vc, animated: true)
                 return
             }
         }
         else {
             if let vc = self.instantiateMainViewController(),
-                vc as? RSAFRootViewControllerProtocol != nil {
+                var rvc = vc as? RSAFRootViewControllerProtocol,
+                let coreState = state.coreState as? RSAFCoreState {
+                rvc.taskBuilder = RSAFCoreSelectors.getTaskBuilder(coreState)
                 self.transition(toRootViewController: vc, animated: true)
                 return
             }
@@ -86,6 +90,10 @@ open class RSLApplicationDelegate: RSAFApplicationDelegate {
     }
     
     open func startSessionItem() -> RSAFScheduleItem? {
+        return nil
+    }
+    
+    open func endSessionItem() -> RSAFScheduleItem? {
         return nil
     }
     

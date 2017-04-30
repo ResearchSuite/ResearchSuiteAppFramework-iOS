@@ -7,24 +7,29 @@
 //
 
 import UIKit
+import ResearchSuiteResultsProcessor
+import ResearchSuiteTaskBuilder
 
 public final class RSLLabState: RSAFBaseState {
     
     public let researcherDemographicsCompleted: Bool
     public let sessionId: String?
+    public let sessionLabel: String?
     public let sessionStorage: [String: NSObject]
-    public let sessionTaskBuilder: RSAFTaskBuilderManager?
-    public let sessionResultsProcessor: RSAFResultsProcessorManager?
+    public let sessionTaskBuilder: RSTBTaskBuilder?
+    public let sessionResultsProcessor: RSRPResultsProcessor?
     
     public init(researcherDemographicsCompleted: Bool = false,
                 sessionId: String? = nil,
+                sessionLabel: String? = nil,
                 sessionStorage: [String: NSObject] = [:],
-                sessionTaskBuilder: RSAFTaskBuilderManager? = nil,
-                sessionResultsProcessor: RSAFResultsProcessorManager? = nil
+                sessionTaskBuilder: RSTBTaskBuilder? = nil,
+                sessionResultsProcessor: RSRPResultsProcessor? = nil
         ) {
         
         self.researcherDemographicsCompleted = researcherDemographicsCompleted
         self.sessionId = sessionId
+        self.sessionLabel = sessionLabel
         self.sessionStorage = sessionStorage
         self.sessionTaskBuilder = sessionTaskBuilder
         self.sessionResultsProcessor = sessionResultsProcessor
@@ -42,14 +47,16 @@ public final class RSLLabState: RSAFBaseState {
         fromState: RSLLabState,
         researcherDemographicsCompleted: Bool? = nil,
         sessionId: String?? = nil,
+        sessionLabel: String?? = nil,
         sessionStorage: [String: NSObject]? = nil,
-        sessionTaskBuilder: RSAFTaskBuilderManager?? = nil,
-        sessionResultsProcessor: RSAFResultsProcessorManager?? = nil
+        sessionTaskBuilder: RSTBTaskBuilder?? = nil,
+        sessionResultsProcessor: RSRPResultsProcessor?? = nil
         ) -> RSLLabState {
         
         return RSLLabState(
             researcherDemographicsCompleted: researcherDemographicsCompleted ?? fromState.researcherDemographicsCompleted,
             sessionId: sessionId ?? fromState.sessionId,
+            sessionLabel: sessionLabel ?? fromState.sessionLabel,
             sessionStorage: sessionStorage ?? fromState.sessionStorage,
             sessionTaskBuilder: sessionTaskBuilder ?? fromState.sessionTaskBuilder,
             sessionResultsProcessor: sessionResultsProcessor ?? fromState.sessionResultsProcessor
@@ -57,7 +64,7 @@ public final class RSLLabState: RSAFBaseState {
     }
     
     open override var description: String {
-        return "\n\tsessionId: \(self.sessionId)\n\tsessionStorage: \(self.sessionStorage)"
+        return "\n\tsessionId: \(self.sessionId)\n\tsessionLabel: \(self.sessionLabel)\n\tsessionStorage: \(self.sessionStorage)\nsessionTaskBuilder: \(self.sessionTaskBuilder)\nsessionResultsProcessor: \(self.sessionResultsProcessor)"
     }
 
 }

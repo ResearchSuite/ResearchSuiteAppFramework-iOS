@@ -3,15 +3,18 @@ use_frameworks!
 target 'ResearchSuiteAppFramework_Example' do
   pod 'ResearchSuiteAppFramework/Lab', :path => '../'
 
-  pod "sdlrkx"
-  pod "OhmageOMHSDK"
-  pod "OhmageOMHSDK/RSTBSupport"
-  pod "OhmageOMHSDK/RSRPSupport"
-  pod "ResearchSuiteTaskBuilder"
-  # pod "OhmageOMHSDK", :path => '../../../../ohmage/RSuiteSDKs/OhmageOMHSDK'
-  # pod "OhmageOMHSDK/RSTBSupport", :path => '../../../../ohmage/RSuiteSDKs/OhmageOMHSDK'
-  # pod "OhmageOMHSDK/RSRPSupport",:path => '../../../../ohmage/RSuiteSDKs/OhmageOMHSDK'
-  # pod "ResearchSuiteTaskBuilder",:path => '../../ResearchSuiteTaskBuilder'
+  # pod "sdlrkx"
+  # pod "OhmageOMHSDK"
+  # pod "OhmageOMHSDK/RSTBSupport"
+  # pod "OhmageOMHSDK/RSRPSupport"
+  # pod "ResearchSuiteTaskBuilder"
+  pod "ResearchSuiteResultsProcessor", :path => '../../ResearchSuiteResultsProcessor'
+
+  pod "OhmageOMHSDK", :path => '../../../../ohmage/RSuiteSDKs/OhmageOMHSDK'
+  pod "OhmageOMHSDK/RSTBSupport", :path => '../../../../ohmage/RSuiteSDKs/OhmageOMHSDK'
+  pod "OhmageOMHSDK/RSRPSupport",:path => '../../../../ohmage/RSuiteSDKs/OhmageOMHSDK'
+  pod "ResearchSuiteTaskBuilder",:path => '../../ResearchSuiteTaskBuilder'
+  pod "sdlrkx", :path => '../../sdl-rkx'
 
   target 'ResearchSuiteAppFramework_Tests' do
     inherit! :search_paths

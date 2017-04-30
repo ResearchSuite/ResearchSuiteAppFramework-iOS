@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="4Nj-v1-q6d">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="4Nj-v1-q6d">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -20,20 +22,47 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jOs-os-h5h">
-                                <rect key="frame" x="164" y="617" width="47" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jOs-os-h5h" customClass="RSAFBorderedButton" customModule="ResearchSuiteAppFramework">
+                                <rect key="frame" x="107.5" y="575" width="160" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="160" id="w1w-ny-j29"/>
+                                    <constraint firstAttribute="height" constant="60" id="zxf-FC-fPg"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
                                 <state key="normal" title="Sign In"/>
                                 <connections>
                                     <action selector="signInTapped:" destination="4Nj-v1-q6d" eventType="touchUpInside" id="W3k-YI-Xnx"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="SVb-VI-IbX">
+                                <rect key="frame" x="19" y="165" width="337.5" height="337.5"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="SVb-VI-IbX" secondAttribute="height" multiplier="1:1" id="ixy-HF-hUD"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="RSuite Lab App" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tGY-wF-2ti">
+                                <rect key="frame" x="94.5" y="111.5" width="186" height="34"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleTitle1"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="lZ1-sC-fHF" firstAttribute="top" secondItem="jOs-os-h5h" secondAttribute="bottom" constant="20" id="GWm-SR-QlW"/>
-                            <constraint firstItem="jOs-os-h5h" firstAttribute="centerX" secondItem="ffw-wH-rlw" secondAttribute="centerX" id="Hlq-Ik-LKd"/>
+                            <constraint firstItem="lZ1-sC-fHF" firstAttribute="top" secondItem="jOs-os-h5h" secondAttribute="bottom" constant="32" id="GWm-SR-QlW"/>
+                            <constraint firstItem="SVb-VI-IbX" firstAttribute="centerX" secondItem="ffw-wH-rlw" secondAttribute="centerX" id="RII-sB-Abm"/>
+                            <constraint firstItem="SVb-VI-IbX" firstAttribute="width" secondItem="ffw-wH-rlw" secondAttribute="width" multiplier="0.9" id="bpq-Ff-4nd"/>
+                            <constraint firstItem="tGY-wF-2ti" firstAttribute="centerX" secondItem="ffw-wH-rlw" secondAttribute="centerX" id="dpk-Ak-g3F"/>
+                            <constraint firstItem="SVb-VI-IbX" firstAttribute="centerY" secondItem="ffw-wH-rlw" secondAttribute="centerY" id="enN-3G-9Q8"/>
+                            <constraint firstItem="SVb-VI-IbX" firstAttribute="top" secondItem="tGY-wF-2ti" secondAttribute="bottom" constant="20" id="gKc-R4-KJz"/>
+                            <constraint firstItem="jOs-os-h5h" firstAttribute="centerX" secondItem="ffw-wH-rlw" secondAttribute="centerX" id="smf-Vm-Wga"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="titleImageView" destination="SVb-VI-IbX" id="fVO-SD-pBC"/>
+                        <outlet property="titleLabel" destination="tGY-wF-2ti" id="Ya8-yF-I2D"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lV0-xu-kRK" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

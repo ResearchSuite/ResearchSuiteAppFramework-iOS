@@ -10,12 +10,15 @@ import UIKit
 import ResearchSuiteTaskBuilder
 import Gloss
 import ReSwift
+import ResearchKit
 
 open class RSAFActivityTableViewController: UITableViewController {
 
     open var schedule: RSAFSchedule?
     open var scheduleItems: [RSAFScheduleItem] = []
     open var store: Store<RSAFCombinedState>?
+    open var taskBuilder: RSTBTaskBuilder?
+    open var resultsDispatchableFunc: ((UUID, RSAFActivityRun, ORKTaskResult?) -> Dispatchable<RSAFCombinedState>?)?
     
     override open func viewDidLoad() {
         super.viewDidLoad()
@@ -59,12 +62,16 @@ open class RSAFActivityTableViewController: UITableViewController {
         
         tableView.deselectRow(at: indexPath, animated: true)
         
-        guard let item = self.scheduleItem(forIndexPath: indexPath) else {
+        guard let taskBuilder = self.taskBuilder,
+            let item = self.scheduleItem(forIndexPath: indexPath) else {
             return
         }
         
-        let activityRun = RSAFActivityRun.create(from: item)
-        let action = QueueActivityAction(uuid: UUID(), activityRun: activityRun)
+        if let dispatchableFunc = self.resultsDispatchableFunc {
+            item.onCompletionActionCreators = [dispatchableFunc]
+        }
+        
+        let action = RSAFActionCreators.queueActivity(fromScheduleItem: item, taskBuilder: taskBuilder)
         self.store?.dispatch(action)
         
     }

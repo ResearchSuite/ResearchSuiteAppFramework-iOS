@@ -20,7 +20,7 @@ open class RSAFScheduleItem: Decodable {
     
     open let activity: JSON
     open let resultTransforms: [RSRPResultTransform]
-    open var onCompletionActionCreators: [(UUID, RSAFActivityRun, ORKTaskResult?) -> Action?]?
+    open var onCompletionActionCreators: [(UUID, RSAFActivityRun, ORKTaskResult?) -> Dispatchable<RSAFCombinedState>?]?
     
     // MARK: - Deserialization
     
