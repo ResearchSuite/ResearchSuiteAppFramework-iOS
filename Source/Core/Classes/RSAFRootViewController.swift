@@ -19,6 +19,8 @@ open class RSAFRootViewController: UIViewController, RSAFRootViewControllerProto
     
     public var taskBuilder: RSTBTaskBuilder?
     
+    weak public var RSAFDelegate: RSAFRootViewControllerProtocolDelegate?
+    
     public var contentHidden = false {
         didSet {
             guard contentHidden != oldValue && isViewLoaded else { return }
@@ -56,6 +58,8 @@ open class RSAFRootViewController: UIViewController, RSAFRootViewControllerProto
                 if let state = self?.state {
                     self?.newState(state: state)
                 }
+                
+                self?.RSAFDelegate?.activityRunDidComplete(activityRun: activityRun)
             })
         }
         

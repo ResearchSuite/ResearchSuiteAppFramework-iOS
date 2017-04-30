@@ -11,6 +11,11 @@ import ReSwift
 import ResearchKit
 import ResearchSuiteTaskBuilder
 
+
+public protocol RSAFRootViewControllerProtocolDelegate: class {
+    func activityRunDidComplete(activityRun: RSAFActivityRun)
+}
+
 public protocol RSAFRootViewControllerProtocol {
     
     var contentHidden: Bool { get set }
@@ -18,6 +23,7 @@ public protocol RSAFRootViewControllerProtocol {
     
     var store: Store<RSAFCombinedState>? { get }
     var taskBuilder: RSTBTaskBuilder? { get set }
+    weak var RSAFDelegate: RSAFRootViewControllerProtocolDelegate? { get set }
     func runActivity(uuid: UUID, activityRun: RSAFActivityRun, taskBuilder: RSTBTaskBuilder, completion: @escaping ()->Void)
     
 }

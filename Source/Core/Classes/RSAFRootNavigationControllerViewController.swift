@@ -12,6 +12,8 @@ import ResearchSuiteTaskBuilder
 
 open class RSAFRootNavigationControllerViewController: UINavigationController, RSAFRootViewControllerProtocol, StoreSubscriber {
     
+    public weak var RSAFDelegate: RSAFRootViewControllerProtocolDelegate?
+
     public var taskBuilder: RSTBTaskBuilder?
 
     public var presentedActivity: UUID?
@@ -53,6 +55,8 @@ open class RSAFRootNavigationControllerViewController: UINavigationController, R
                 if let state = self?.state {
                     self?.newState(state: state)
                 }
+                
+                self?.RSAFDelegate?.activityRunDidComplete(activityRun: activityRun)
             })
         }
         

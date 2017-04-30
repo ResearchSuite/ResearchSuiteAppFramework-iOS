@@ -14,7 +14,7 @@ import ReSwift
 
 public struct RSAFActivityRun {
     
-    let identifier: String
+    public let identifier: String
     let activity: JsonElement
     let resultTransforms: [RSRPResultTransform]?
     var onCompletionActionCreators: [(UUID, RSAFActivityRun, ORKTaskResult?) -> Dispatchable<RSAFCombinedState>?]?

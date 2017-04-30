@@ -13,7 +13,7 @@ import ResearchSuiteResultsProcessor
 import ResearchSuiteTaskBuilder
 import Gloss
 
-open class RSAFApplicationDelegate: UIResponder, UIApplicationDelegate, ORKPasscodeDelegate {
+open class RSAFApplicationDelegate: UIResponder, UIApplicationDelegate, ORKPasscodeDelegate, RSAFRootViewControllerProtocolDelegate {
     
     open var window: UIWindow?
     
@@ -93,7 +93,8 @@ open class RSAFApplicationDelegate: UIResponder, UIApplicationDelegate, ORKPassc
         if isSignedIn(state: state) && ORKPasscodeViewController.isPasscodeStoredInKeychain() {
             
             if let vc = self.instantiateMainViewController(),
-                vc as? RSAFRootViewControllerProtocol != nil {
+                var rvc = vc as? RSAFRootViewControllerProtocol {
+                rvc.RSAFDelegate = self
                 self.transition(toRootViewController: vc, animated: true)
                 return
             }
@@ -101,7 +102,8 @@ open class RSAFApplicationDelegate: UIResponder, UIApplicationDelegate, ORKPassc
         }
         else {
             if let vc = self.instantiateOnboardingViewController(),
-                vc as? RSAFRootViewControllerProtocol != nil {
+                var rvc = vc as? RSAFRootViewControllerProtocol {
+                rvc.RSAFDelegate = self
                 self.transition(toRootViewController: vc, animated: true)
                 return
             }
@@ -416,5 +418,9 @@ open class RSAFApplicationDelegate: UIResponder, UIApplicationDelegate, ORKPassc
     
     open var titleImage: UIImage? {
         return nil
+    }
+    
+    open func activityRunDidComplete(activityRun: RSAFActivityRun) {
+        
     }
 }

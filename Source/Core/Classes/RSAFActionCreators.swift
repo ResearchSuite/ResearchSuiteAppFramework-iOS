@@ -127,6 +127,7 @@ open class RSAFActionCreators: NSObject {
                 })
             }
             
+            //this removes the actviity from the queue
             let completeAction = CompleteActivityAction(uuid: uuid, activityRun: activityRun, taskResult: taskResult)
             actionCreatorCallback( { (store, state) in
                 return completeAction

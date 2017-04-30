@@ -61,6 +61,7 @@ open class RSLApplicationDelegate: RSAFApplicationDelegate {
                 var rvc = vc as? RSAFRootViewControllerProtocol,
                 let coreState = state.coreState as? RSAFCoreState {
                 rvc.taskBuilder = RSAFCoreSelectors.getTaskBuilder(coreState)
+                rvc.RSAFDelegate = self
                 self.transition(toRootViewController: vc, animated: true)
                 return
             }
@@ -70,6 +71,7 @@ open class RSLApplicationDelegate: RSAFApplicationDelegate {
                 var rvc = vc as? RSAFRootViewControllerProtocol,
                 let coreState = state.coreState as? RSAFCoreState {
                 rvc.taskBuilder = RSAFCoreSelectors.getTaskBuilder(coreState)
+                rvc.RSAFDelegate = self
                 self.transition(toRootViewController: vc, animated: true)
                 return
             }
