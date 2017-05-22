@@ -19,9 +19,10 @@ Pod::Spec.new do |s|
 
   s.description      = <<-DESC
 The ResearchSuiteAppFramework is the easiest way to build mobile health research studies.
+NOTE: VERY EXPERIMENTAL!!
                        DESC
 
-  s.homepage         = 'https://github.com/jdkizer9/ResearchSuiteAppFramework'
+  s.homepage         = 'https://github.com/ResearchSuite/ResearchSuiteAppFramework-iOS'
   # s.screenshots     = 'www.example.com/screenshots_1', 'www.example.com/screenshots_2'
   s.license          = { :type => "Apache 2", :file => "LICENSE" }
   s.author           = { "James Kizer, Curiosity Health" => "james at curiosityhealth dot com" }
@@ -34,8 +35,8 @@ The ResearchSuiteAppFramework is the easiest way to build mobile health research
     core.source_files = 'Source/Core/**/*'
     core.dependency 'ResearchKit', '~> 1.4'
     core.dependency 'ReSwift', '~> 3.0'
-    core.dependency 'ResearchSuiteTaskBuilder', '~> 0.2'
-    core.dependency 'ResearchSuiteResultsProcessor', '~> 0.2'
+    core.dependency 'ResearchSuiteTaskBuilder', '~> 0.5'
+    core.dependency 'ResearchSuiteResultsProcessor', '~> 0.3'
     core.dependency 'Gloss', '~> 1.2'
   end
 
@@ -46,6 +47,8 @@ The ResearchSuiteAppFramework is the easiest way to build mobile health research
     }
     lab.dependency 'ResearchSuiteAppFramework/Core'
   end
+
+  s.default_subspec = 'Core'
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'
