@@ -33,7 +33,7 @@ open class RSAFKeychainStateManager: RSAFStateManager {
         }
     }
     
-    static func clearKeychain() {
+    static public func clearKeychain() {
         do {
             try keychainQueue.sync {
                 try ORKKeychainWrapper.resetKeychain()

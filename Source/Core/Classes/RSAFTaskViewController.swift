@@ -9,13 +9,13 @@
 import UIKit
 import ResearchKit
 
-class RSAFTaskViewController: ORKTaskViewController, ORKTaskViewControllerDelegate {
+open class RSAFTaskViewController: ORKTaskViewController, ORKTaskViewControllerDelegate {
     
     var taskFinishedHandler: ((ORKTaskViewController, ORKTaskViewControllerFinishReason, Error?) -> ())
     
     let activityUUID: UUID
     
-    init(activityUUID: UUID, task: ORKTask, taskFinishedHandler: @escaping ((ORKTaskViewController, ORKTaskViewControllerFinishReason, Error?) -> ())) {
+    public init(activityUUID: UUID, task: ORKTask, taskFinishedHandler: @escaping ((ORKTaskViewController, ORKTaskViewControllerFinishReason, Error?) -> ())) {
         
         self.activityUUID = activityUUID
         self.taskFinishedHandler = taskFinishedHandler
