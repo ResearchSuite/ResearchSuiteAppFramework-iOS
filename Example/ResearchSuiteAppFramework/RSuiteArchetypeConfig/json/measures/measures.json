@@ -23,22 +23,98 @@
     {
       "identifier": "home",
       "taskElement": {
-        "type": "elementFile",
-        "identifier": "demographicsFile",
-        "elementFileName": "demographics"
+        "identifier": "location",
+        "type": "location",
+        "title": "Home",
+        "text": "Drop a pin at your home.",
+        "optional": "false",
+        "useCurrentLocation": true
       },
-      "resultTransforms": [
-        {
-          "transform": "Demographics",
-          "inputMapping": [
-            {"stepIdentifier":"gender", "parameter":"GenderChoiceResult"},
-            {"stepIdentifier":"age", "parameter":"AgeIntegerResult"},
-            {"stepIdentifier":"zip_code", "parameter":"ZipTextResult"},
-            {"stepIdentifier":"education", "parameter":"EducationChoiceResult"},
-            {"stepIdentifier":"employment_income", "parameter":"EmploymentChoiceResult"}
-          ]
-        }
-      ]
+      "resultTransforms": []
+    },
+    {
+      "identifier": "work",
+      "taskElement": {
+        "identifier": "location",
+        "type": "location",
+        "title": "Work",
+        "text": "Drop a pin at your place of work.",
+        "optional": "false",
+        "useCurrentLocation": true
+      },
+      "resultTransforms": []
+    },
+    {
+      "identifier": "notification_time",
+      "taskElement": {
+          "identifier":"notification_time",
+          "type":"timePicker",
+          "text":"Please choose when you would like to be reminded to perform your daily survey.",
+          "optional": false
+      },
+      "resultTransforms": []
+    },
+    {
+      "identifier": "PAM",
+      "taskElement": {
+        "identifier": "PAM",
+        "type": "PAM"
+      },
+      "resultTransforms": []
+    },
+    {
+      "identifier": "YADLFull",
+      "taskElement": {
+        "type": "elementFile",
+        "identifier": "YADLFull",
+        "elementFileName": "YADLFull"
+      },
+      "resultTransforms": []
+    },
+    {
+      "identifier": "YADLSpot",
+      "taskElement": {
+        "type": "elementFile",
+        "identifier": "YADLSpot",
+        "elementFileName": "YADLSpot"
+      },
+      "resultTransforms": []
+    },
+    {
+      "identifier": "PSS4",
+      "taskElement": {
+        "type": "elementFile",
+        "identifier": "pss4",
+        "elementFileName": "pss4"
+      },
+      "resultTransforms": []
+    },
+    {
+      "identifier": "PSS10",
+      "taskElement": {
+        "type": "elementFile",
+        "identifier": "pss10",
+        "elementFileName": "pss10"
+      },
+      "resultTransforms": []
+    },
+    {
+      "identifier": "StressSourceQuestionaire",
+      "taskElement": {
+        "type": "elementFile",
+        "identifier": "stressSourceQuestionaire",
+        "elementFileName": "stressSourceQuestionaire"
+      },
+      "resultTransforms": []
+    },
+    {
+      "identifier": "BreathingTask",
+      "taskElement": {
+        "type": "elementFile",
+        "identifier": "relaxationBreathingTask",
+        "elementFileName": "relaxationBreathingTask"
+      },
+      "resultTransforms": []
     }
   ]
 }

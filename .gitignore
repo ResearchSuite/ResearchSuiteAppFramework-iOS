@@ -1,6 +1,8 @@
 # OS X
 .DS_Store
 
+YADL.xcassets/
+
 
 # Xcode
 build/

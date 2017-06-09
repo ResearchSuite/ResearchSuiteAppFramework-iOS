@@ -15,6 +15,43 @@
             "identifier": "demographics",
             "type": "measure",
             "measureID": "demographics"
+          },
+          {
+            "identifier": "pss10",
+            "type": "measure",
+            "measureID": "PSS10"
+          },
+          {
+            "identifier": "PAM",
+            "type": "measure",
+            "measureID": "PAM"
+          },
+          {
+            "identifier": "YADLFull",
+            "type": "measure",
+            "measureID": "YADLFull"
+          },
+          {
+            "identifier": "locations_instruction",
+            "type": "instruction",
+            "title": "Locations",
+            "text": "The next two steps will ask for your home and work locations. These locations will be kept on your device and will not be shared with the research team. We monitor these locations to determine how much time you spend at home and at work."
+          },
+          {
+            "identifier": "home",
+            "type": "measure",
+            "measureID": "home"
+          },
+          {
+            "identifier": "work",
+            "type": "measure",
+            "measureID": "work"
+          },
+          {
+            "identifier": "notification_instruction",
+            "type": "instruction",
+            "title": "Notification Time",
+            "text": "In the next step, please enter the time that you would like to be reminded to take your daily survey"
           }
         ]
       },

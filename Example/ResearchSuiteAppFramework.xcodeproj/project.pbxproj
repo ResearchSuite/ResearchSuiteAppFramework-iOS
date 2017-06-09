@@ -14,22 +14,7 @@
 		607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 607FACDE1AFB9204008FA782 /* LaunchScreen.xib */; };
 		607FACEC1AFB9204008FA782 /* Tests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 607FACEB1AFB9204008FA782 /* Tests.swift */; };
 		6A232A91C1006F9A4AEF4950 /* Pods_ResearchSuiteAppFramework_Example.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7A3BBD0BB9F2E19CA46A70A /* Pods_ResearchSuiteAppFramework_Example.framework */; };
-		E2231A9D1E89EA9800DBB1BA /* startSession.json in Resources */ = {isa = PBXBuildFile; fileRef = E2231A9C1E89EA9800DBB1BA /* startSession.json */; };
-		E264E7F61E88C78A00582958 /* onboardingSchedule.json in Resources */ = {isa = PBXBuildFile; fileRef = E264E7F41E88C78A00582958 /* onboardingSchedule.json */; };
-		E264E7F71E88C78A00582958 /* participantSchedule.json in Resources */ = {isa = PBXBuildFile; fileRef = E264E7F51E88C78A00582958 /* participantSchedule.json */; };
-		E264E7FB1E88D1A200582958 /* participantDemographics.json in Resources */ = {isa = PBXBuildFile; fileRef = E264E7F81E88D1A200582958 /* participantDemographics.json */; };
-		E264E7FC1E88D1A200582958 /* researcherDemographics.json in Resources */ = {isa = PBXBuildFile; fileRef = E264E7F91E88D1A200582958 /* researcherDemographics.json */; };
-		E264E7FD1E88D1A200582958 /* signIn.json in Resources */ = {isa = PBXBuildFile; fileRef = E264E7FA1E88D1A200582958 /* signIn.json */; };
-		E2FB73091E8A1DD4008C9A50 /* bart_25_cents_full_task.json in Resources */ = {isa = PBXBuildFile; fileRef = E2FB72FF1E8A1DD4008C9A50 /* bart_25_cents_full_task.json */; };
-		E2FB730A1E8A1DD4008C9A50 /* bart_250_dollars_full_task.json in Resources */ = {isa = PBXBuildFile; fileRef = E2FB73001E8A1DD4008C9A50 /* bart_250_dollars_full_task.json */; };
-		E2FB730B1E8A1DD4008C9A50 /* dd_money_1_month_full_task.json in Resources */ = {isa = PBXBuildFile; fileRef = E2FB73011E8A1DD4008C9A50 /* dd_money_1_month_full_task.json */; };
-		E2FB730C1E8A1DD4008C9A50 /* dd_money_6_month_full_task.json in Resources */ = {isa = PBXBuildFile; fileRef = E2FB73021E8A1DD4008C9A50 /* dd_money_6_month_full_task.json */; };
-		E2FB730D1E8A1DD4008C9A50 /* dd_time_1_year_full_task.json in Resources */ = {isa = PBXBuildFile; fileRef = E2FB73031E8A1DD4008C9A50 /* dd_time_1_year_full_task.json */; };
-		E2FB730E1E8A1DD4008C9A50 /* dd_time_6_month_full_task.json in Resources */ = {isa = PBXBuildFile; fileRef = E2FB73041E8A1DD4008C9A50 /* dd_time_6_month_full_task.json */; };
-		E2FB730F1E8A1DD4008C9A50 /* endSession.json in Resources */ = {isa = PBXBuildFile; fileRef = E2FB73051E8A1DD4008C9A50 /* endSession.json */; };
-		E2FB73101E8A1DD4008C9A50 /* go_no_go_stable_stimulus_full_task.json in Resources */ = {isa = PBXBuildFile; fileRef = E2FB73061E8A1DD4008C9A50 /* go_no_go_stable_stimulus_full_task.json */; };
-		E2FB73111E8A1DD4008C9A50 /* go_no_go_variable_stimulus_full_task.json in Resources */ = {isa = PBXBuildFile; fileRef = E2FB73071E8A1DD4008C9A50 /* go_no_go_variable_stimulus_full_task.json */; };
-		E2FB73121E8A1DD4008C9A50 /* shuffled_active_tasks.json in Resources */ = {isa = PBXBuildFile; fileRef = E2FB73081E8A1DD4008C9A50 /* shuffled_active_tasks.json */; };
+		E27A777A1EEB40360083B00A /* YADL.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E27A77791EEB40360083B00A /* YADL.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,22 +45,7 @@
 		D08467DA0B02A01BD74FCF14 /* Pods-ResearchSuiteAppFramework_Tests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ResearchSuiteAppFramework_Tests.release.xcconfig"; path = "Pods/Target Support Files/Pods-ResearchSuiteAppFramework_Tests/Pods-ResearchSuiteAppFramework_Tests.release.xcconfig"; sourceTree = "<group>"; };
 		D2CA435EC58D3CCD2695AF31 /* LICENSE */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text; name = LICENSE; path = ../LICENSE; sourceTree = "<group>"; };
 		D47ECF53BC1B394DC67B1F84 /* Pods_ResearchSuiteAppFramework_Tests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ResearchSuiteAppFramework_Tests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E2231A9C1E89EA9800DBB1BA /* startSession.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = startSession.json; sourceTree = "<group>"; };
-		E264E7F41E88C78A00582958 /* onboardingSchedule.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = onboardingSchedule.json; sourceTree = "<group>"; };
-		E264E7F51E88C78A00582958 /* participantSchedule.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = participantSchedule.json; sourceTree = "<group>"; };
-		E264E7F81E88D1A200582958 /* participantDemographics.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = participantDemographics.json; sourceTree = "<group>"; };
-		E264E7F91E88D1A200582958 /* researcherDemographics.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = researcherDemographics.json; sourceTree = "<group>"; };
-		E264E7FA1E88D1A200582958 /* signIn.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = signIn.json; sourceTree = "<group>"; };
-		E2FB72FF1E8A1DD4008C9A50 /* bart_25_cents_full_task.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = bart_25_cents_full_task.json; sourceTree = "<group>"; };
-		E2FB73001E8A1DD4008C9A50 /* bart_250_dollars_full_task.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = bart_250_dollars_full_task.json; sourceTree = "<group>"; };
-		E2FB73011E8A1DD4008C9A50 /* dd_money_1_month_full_task.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = dd_money_1_month_full_task.json; sourceTree = "<group>"; };
-		E2FB73021E8A1DD4008C9A50 /* dd_money_6_month_full_task.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = dd_money_6_month_full_task.json; sourceTree = "<group>"; };
-		E2FB73031E8A1DD4008C9A50 /* dd_time_1_year_full_task.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = dd_time_1_year_full_task.json; sourceTree = "<group>"; };
-		E2FB73041E8A1DD4008C9A50 /* dd_time_6_month_full_task.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = dd_time_6_month_full_task.json; sourceTree = "<group>"; };
-		E2FB73051E8A1DD4008C9A50 /* endSession.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = endSession.json; sourceTree = "<group>"; };
-		E2FB73061E8A1DD4008C9A50 /* go_no_go_stable_stimulus_full_task.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = go_no_go_stable_stimulus_full_task.json; sourceTree = "<group>"; };
-		E2FB73071E8A1DD4008C9A50 /* go_no_go_variable_stimulus_full_task.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = go_no_go_variable_stimulus_full_task.json; sourceTree = "<group>"; };
-		E2FB73081E8A1DD4008C9A50 /* shuffled_active_tasks.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = shuffled_active_tasks.json; sourceTree = "<group>"; };
+		E27A77791EEB40360083B00A /* YADL.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = YADL.xcassets; sourceTree = "<group>"; };
 		E7A3BBD0BB9F2E19CA46A70A /* Pods_ResearchSuiteAppFramework_Example.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ResearchSuiteAppFramework_Example.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -192,32 +162,25 @@
 		E264E7F31E88C6F500582958 /* config */ = {
 			isa = PBXGroup;
 			children = (
-				E264E7F41E88C78A00582958 /* onboardingSchedule.json */,
-				E264E7F91E88D1A200582958 /* researcherDemographics.json */,
-				E264E7FA1E88D1A200582958 /* signIn.json */,
-				E2FB72FE1E8A1CEE008C9A50 /* participant */,
+				E27A77781EEB40290083B00A /* images */,
+				E27A77771EEB40240083B00A /* json */,
 			);
 			name = config;
 			sourceTree = "<group>";
 		};
-		E2FB72FE1E8A1CEE008C9A50 /* participant */ = {
+		E27A77771EEB40240083B00A /* json */ = {
 			isa = PBXGroup;
 			children = (
-				E2FB72FF1E8A1DD4008C9A50 /* bart_25_cents_full_task.json */,
-				E2FB73001E8A1DD4008C9A50 /* bart_250_dollars_full_task.json */,
-				E2231A9C1E89EA9800DBB1BA /* startSession.json */,
-				E264E7F81E88D1A200582958 /* participantDemographics.json */,
-				E2FB73011E8A1DD4008C9A50 /* dd_money_1_month_full_task.json */,
-				E2FB73021E8A1DD4008C9A50 /* dd_money_6_month_full_task.json */,
-				E2FB73031E8A1DD4008C9A50 /* dd_time_1_year_full_task.json */,
-				E2FB73041E8A1DD4008C9A50 /* dd_time_6_month_full_task.json */,
-				E2FB73051E8A1DD4008C9A50 /* endSession.json */,
-				E2FB73061E8A1DD4008C9A50 /* go_no_go_stable_stimulus_full_task.json */,
-				E2FB73071E8A1DD4008C9A50 /* go_no_go_variable_stimulus_full_task.json */,
-				E2FB73081E8A1DD4008C9A50 /* shuffled_active_tasks.json */,
-				E264E7F51E88C78A00582958 /* participantSchedule.json */,
 			);
-			name = participant;
+			name = json;
+			sourceTree = "<group>";
+		};
+		E27A77781EEB40290083B00A /* images */ = {
+			isa = PBXGroup;
+			children = (
+				E27A77791EEB40360083B00A /* YADL.xcassets */,
+			);
+			name = images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -312,24 +275,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				607FACDB1AFB9204008FA782 /* Main.storyboard in Resources */,
-				E2FB730B1E8A1DD4008C9A50 /* dd_money_1_month_full_task.json in Resources */,
-				E2231A9D1E89EA9800DBB1BA /* startSession.json in Resources */,
-				E264E7FC1E88D1A200582958 /* researcherDemographics.json in Resources */,
-				E2FB730C1E8A1DD4008C9A50 /* dd_money_6_month_full_task.json in Resources */,
-				E264E7FB1E88D1A200582958 /* participantDemographics.json in Resources */,
-				E2FB73111E8A1DD4008C9A50 /* go_no_go_variable_stimulus_full_task.json in Resources */,
-				E2FB730A1E8A1DD4008C9A50 /* bart_250_dollars_full_task.json in Resources */,
-				E2FB730E1E8A1DD4008C9A50 /* dd_time_6_month_full_task.json in Resources */,
-				E2FB73121E8A1DD4008C9A50 /* shuffled_active_tasks.json in Resources */,
-				E264E7FD1E88D1A200582958 /* signIn.json in Resources */,
 				607FACE01AFB9204008FA782 /* LaunchScreen.xib in Resources */,
 				607FACDD1AFB9204008FA782 /* Images.xcassets in Resources */,
-				E264E7F61E88C78A00582958 /* onboardingSchedule.json in Resources */,
-				E2FB730F1E8A1DD4008C9A50 /* endSession.json in Resources */,
-				E264E7F71E88C78A00582958 /* participantSchedule.json in Resources */,
-				E2FB73091E8A1DD4008C9A50 /* bart_25_cents_full_task.json in Resources */,
-				E2FB73101E8A1DD4008C9A50 /* go_no_go_stable_stimulus_full_task.json in Resources */,
-				E2FB730D1E8A1DD4008C9A50 /* dd_time_1_year_full_task.json in Resources */,
+				E27A777A1EEB40360083B00A /* YADL.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
