@@ -1,0 +1,40 @@
+{
+  "activities": [
+    {
+      "identifier": "baseline",
+      "activity": {
+        "type": "elementList",
+        "elements": [
+          {
+            "identifier": "introduction",
+            "type": "instruction",
+            "title": "Baseline Survey",
+            "text": "Thanks for participating!"
+          },
+          {
+            "identifier": "demographics",
+            "type": "measure",
+            "measureID": "demographics"
+          }
+        ]
+      },
+      "onCompletion": {
+        "onSuccess": [
+          {
+            "type": "processResults",
+            "measureID": "demographics"
+          },
+          {
+            "type": "setValueInState",
+            "key": "baselineCompletionDate",
+            "value": {
+              "type": "Now"
+            }
+          }
+        ],
+        "onFailure": [],
+        "finally": []
+      }
+    }
+  ]
+}

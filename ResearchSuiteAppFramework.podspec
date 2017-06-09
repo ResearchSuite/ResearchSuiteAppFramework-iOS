@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'ResearchSuiteAppFramework'
-  s.version          = '0.0.2'
+  s.version          = '0.0.3'
   s.summary          = 'The ResearchSuiteAppFramework is the easiest way to build mobile health research studies.'
 
 # This description is used to generate tags and improve search results.
@@ -40,15 +40,24 @@ NOTE: VERY EXPERIMENTAL!!
     core.dependency 'Gloss', '~> 1.2'
   end
 
+  s.subspec 'OldCore' do |core|
+    core.source_files = 'Source/OldCore/**/*'
+    core.dependency 'ResearchKit', '~> 1.4'
+    core.dependency 'ReSwift', '~> 3.0'
+    core.dependency 'ResearchSuiteTaskBuilder', '~> 0.5'
+    core.dependency 'ResearchSuiteResultsProcessor', '~> 0.3'
+    core.dependency 'Gloss', '~> 1.2'
+  end
+
   s.subspec 'Lab' do |lab|
     lab.source_files = 'Source/Lab/Classes/*'
     lab.resource_bundles = {
       'LabResources' => ['Source/Lab/Storyboards/*.storyboard']
     }
-    lab.dependency 'ResearchSuiteAppFramework/Core'
+    lab.dependency 'ResearchSuiteAppFramework/OldCore'
   end
 
-  s.default_subspec = 'Core'
+  s.default_subspec = ['Core', 'OldCore']
 
   # s.public_header_files = 'Pod/Classes/**/*.h'
   # s.frameworks = 'UIKit', 'MapKit'

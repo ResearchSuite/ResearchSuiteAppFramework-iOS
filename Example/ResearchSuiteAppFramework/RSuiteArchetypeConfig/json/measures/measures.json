@@ -1,0 +1,44 @@
+{
+  "measures": [
+    {
+      "identifier": "demographics",
+      "taskElement": {
+        "type": "elementFile",
+        "identifier": "demographicsFile",
+        "elementFileName": "demographics"
+      },
+      "resultTransforms": [
+        {
+          "transform": "Demographics",
+          "inputMapping": [
+            {"stepIdentifier":"gender", "parameter":"GenderChoiceResult"},
+            {"stepIdentifier":"age", "parameter":"AgeIntegerResult"},
+            {"stepIdentifier":"zip_code", "parameter":"ZipTextResult"},
+            {"stepIdentifier":"education", "parameter":"EducationChoiceResult"},
+            {"stepIdentifier":"employment_income", "parameter":"EmploymentChoiceResult"}
+          ]
+        }
+      ]
+    },
+    {
+      "identifier": "home",
+      "taskElement": {
+        "type": "elementFile",
+        "identifier": "demographicsFile",
+        "elementFileName": "demographics"
+      },
+      "resultTransforms": [
+        {
+          "transform": "Demographics",
+          "inputMapping": [
+            {"stepIdentifier":"gender", "parameter":"GenderChoiceResult"},
+            {"stepIdentifier":"age", "parameter":"AgeIntegerResult"},
+            {"stepIdentifier":"zip_code", "parameter":"ZipTextResult"},
+            {"stepIdentifier":"education", "parameter":"EducationChoiceResult"},
+            {"stepIdentifier":"employment_income", "parameter":"EmploymentChoiceResult"}
+          ]
+        }
+      ]
+    }
+  ]
+}
