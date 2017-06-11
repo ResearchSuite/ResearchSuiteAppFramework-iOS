@@ -3,7 +3,7 @@
     {
       "identifier": "baseline",
       "activity": {
-        "type": "elementList",
+        "type": "activity",
         "elements": [
           {
             "identifier": "introduction",
@@ -52,6 +52,11 @@
             "type": "instruction",
             "title": "Notification Time",
             "text": "In the next step, please enter the time that you would like to be reminded to take your daily survey"
+          },
+          {
+            "identifier": "notification_time",
+            "type": "measure",
+            "measureID": "notification_time"
           }
         ]
       },
@@ -59,13 +64,55 @@
         "onSuccess": [
           {
             "type": "processResults",
-            "measureID": "demographics"
+            "measureID": "demographics",
+            "transformID": "standard"
+          },
+          {
+            "type": "processResults",
+            "measureID": "pss10",
+            "transformID": "standard"
           },
           {
             "type": "setValueInState",
             "key": "baselineCompletionDate",
             "value": {
-              "type": "Now"
+              "keyword": "Now"
+            }
+          },
+          {
+            "type": "setValueInState",
+            "key": "YADLActivities",
+            "value": {
+              "type": "transform",
+              "measureID": "YADLFull",
+              "transformID": "identifiersForState"
+            }
+          },
+          {
+            "type": "setValueInState",
+            "key": "home",
+            "value": {
+              "type": "transform",
+              "measureID": "home",
+              "transformID": "valueForState"
+            }
+          },
+          {
+            "type": "setValueInState",
+            "key": "work",
+            "value": {
+              "type": "transform",
+              "measureID": "work",
+              "transformID": "valueForState"
+            }
+          },
+          {
+            "type": "setValueInState",
+            "key": "notificationTime",
+            "value": {
+              "type": "transform",
+              "measureID": "notification_time",
+              "transformID": "valueForState"
             }
           }
         ],

@@ -9,6 +9,7 @@
       },
       "resultTransforms": [
         {
+          "identifier": "standard",
           "transform": "Demographics",
           "inputMapping": [
             {"stepIdentifier":"gender", "parameter":"GenderChoiceResult"},
@@ -30,7 +31,15 @@
         "optional": "false",
         "useCurrentLocation": true
       },
-      "resultTransforms": []
+      "resultTransforms": [
+        {
+          "identifier": "valueForState",
+          "transform": "location",
+          "inputMapping": [
+            {"parameter":"result", "stepIdentifier":"home"}
+          ]
+        }
+      ]
     },
     {
       "identifier": "work",
@@ -42,7 +51,15 @@
         "optional": "false",
         "useCurrentLocation": true
       },
-      "resultTransforms": []
+      "resultTransforms": [
+        {
+          "identifier": "valueForState",
+          "transform": "location",
+          "inputMapping": [
+            {"parameter":"result", "stepIdentifier":"work"}
+          ]
+        }
+      ]
     },
     {
       "identifier": "notification_time",
@@ -52,7 +69,15 @@
           "text":"Please choose when you would like to be reminded to perform your daily survey.",
           "optional": false
       },
-      "resultTransforms": []
+      "resultTransforms": [
+        {
+          "identifier": "valueForState",
+          "transform": "timeOfDay",
+          "inputMapping": [
+            {"parameter":"result", "stepIdentifier":"notification_time"}
+          ]
+        }
+      ]
     },
     {
       "identifier": "PAM",
@@ -69,7 +94,15 @@
         "identifier": "YADLFull",
         "elementFileName": "YADLFull"
       },
-      "resultTransforms": []
+      "resultTransforms": [
+        {
+          "identifier": "identifiersForState",
+          "transform": "YADLFullModerateOrHardIdentifiers",
+          "inputMapping": [
+            {"parameter":"results", "stepIdentifierRegex":"yadl_full\\..*"}
+          ]
+        }
+      ]
     },
     {
       "identifier": "YADLSpot",

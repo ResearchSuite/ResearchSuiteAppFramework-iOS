@@ -3,6 +3,22 @@
     {
       "key": "baselineCompletionDate",
       "type": "Date"
+    },
+    {
+      "key": "YADLActivities",
+      "type": "StringArray"
+    },
+    {
+      "key": "home",
+      "type": "Location"
+    },
+    {
+      "key": "work",
+      "type": "Location"
+    },
+    {
+      "key": "notificationTime",
+      "type": "TimeOfDay"
     }
   ]
 }

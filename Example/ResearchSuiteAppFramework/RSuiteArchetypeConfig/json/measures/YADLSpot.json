@@ -24,7 +24,7 @@
         "itemCellSelectedOverlayImageTitle":"first_tab",
         "itemsPerRow":3,
         "itemMinSpacing":10.0,
-        "filterKey": "activity_identifiers",
+        "filterKey": "YADLActivities",
         "imageExtension": "png",
         "items": [
           {
