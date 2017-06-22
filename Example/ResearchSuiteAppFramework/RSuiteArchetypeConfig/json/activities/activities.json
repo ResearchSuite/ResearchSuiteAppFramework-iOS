@@ -63,56 +63,199 @@
       "onCompletion": {
         "onSuccess": [
           {
-            "type": "processResults",
-            "measureID": "demographics",
-            "transformID": "standard"
+            "type": "sendResultToServer",
+            "value": {
+              "type": "resultTransform",
+              "measureID": "demographics",
+              "transformID": "standard"
+            }
           },
           {
-            "type": "processResults",
-            "measureID": "pss10",
-            "transformID": "standard"
+            "type": "sendResultToServer",
+            "value": {
+              "type": "resultTransform",
+              "measureID": "pss10",
+              "transformID": "standard"
+            }
           },
           {
             "type": "setValueInState",
-            "key": "baselineCompletionDate",
+            "identifier": "baselineCompletionDate",
             "value": {
+              "type": "constant",
               "keyword": "Now"
             }
           },
           {
             "type": "setValueInState",
-            "key": "YADLActivities",
+            "identifier": "YADLActivities",
             "value": {
-              "type": "transform",
+              "type": "resultTransform",
               "measureID": "YADLFull",
               "transformID": "identifiersForState"
             }
           },
           {
             "type": "setValueInState",
-            "key": "home",
+            "identifier": "home",
             "value": {
-              "type": "transform",
+              "type": "resultTransform",
               "measureID": "home",
               "transformID": "valueForState"
             }
           },
           {
             "type": "setValueInState",
-            "key": "work",
+            "identifier": "work",
             "value": {
-              "type": "transform",
+              "type": "resultTransform",
               "measureID": "work",
               "transformID": "valueForState"
             }
           },
           {
             "type": "setValueInState",
-            "key": "notificationTime",
+            "identifier": "notificationTime",
             "value": {
-              "type": "transform",
+              "type": "resultTransform",
               "measureID": "notification_time",
               "transformID": "valueForState"
+            }
+          }
+        ],
+        "onFailure": [],
+        "finally": []
+      }
+    },
+    {
+      "identifier": "dailyStressAssessment",
+      "activity": {
+        "type": "activity",
+        "elements": [
+          {
+            "identifier": "pss4",
+            "type": "measure",
+            "measureID": "PSS4"
+          }
+        ]
+      },
+      "onCompletion": {
+        "onSuccess": [
+          {
+            "type": "sendResultToServer",
+            "value": {
+              "type": "resultTransform",
+              "measureID": "pss4",
+              "transformID": "standard"
+            }
+          },
+          {
+            "type": "setValueInState",
+            "identifier": "lastDailySurveyCompletion",
+            "value": {
+              "type": "constant",
+              "keyword": "Now"
+            }
+          },
+          {
+            "type": "launchActivity",
+            "activityID": "sourceQuestionaireAndRelaxation",
+            "predicate": {
+              "format": "$pssScore > $pssThreshold",
+              "substitutions": {
+                "pssScore": {
+                  "type": "resultTransform",
+                  "measureID": "pss4",
+                  "transformID": "stressScore"
+                },
+                "pssThreshold": {
+                  "type": "constant",
+                  "identifier": "stressScoreThreshold"
+                }
+              }
+            }
+          },
+
+        ],
+        "onFailure": [],
+        "finally": [
+          {
+            "type": "launchActivity",
+            "activityID": "dailyVSR"
+          }
+        ]
+      }
+    },
+    {
+      "identifier": "sourceQuestionaireAndRelaxation",
+      "activity": {
+        "type": "activity",
+        "elements": [
+          {
+            "identifier": "StressSourceQuestionaire",
+            "type": "measure",
+            "measureID": "StressSourceQuestionaire"
+          },
+          {
+            "identifier": "BreathingTasks",
+            "type": "measure",
+            "measureID": "BreathingTask"
+          }
+        ]
+      },
+      "onCompletion": {
+        "onSuccess": [
+          {
+            "type": "sendResultToServer",
+            "value": {
+              "type": "resultTransform",
+              "measureID": "demographics",
+              "transformID": "standard"
+            }
+          }
+        ],
+        "onFailure": [],
+        "finally": []
+      }
+    },
+    {
+      "identifier": "dailyVSR",
+      "activity": {
+        "type": "activity",
+        "elements": [
+          {
+            "identifier": "instruction",
+            "type": "instruction",
+            "text": "For the next two image-based tests, try and answer quickly with what comes naturally to you"
+          },
+          {
+            "identifier": "PAM",
+            "type": "measure",
+            "measureID": "PAM"
+          },
+          {
+            "identifier": "YADLSpot",
+            "type": "measure",
+            "measureID": "YADLSpot"
+          }
+        ]
+      },
+      "onCompletion": {
+        "onSuccess": [
+          {
+            "type": "sendResultToServer",
+            "value": {
+              "type": "resultTransform",
+              "measureID": "pss4",
+              "transformID": "standard"
+            }
+          },
+          {
+            "type": "sendResultToServer",
+            "value": {
+              "type": "resultTransform",
+              "measureID": "pss4",
+              "transformID": "standard"
             }
           }
         ],

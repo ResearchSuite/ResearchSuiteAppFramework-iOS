@@ -163,16 +163,8 @@
 			isa = PBXGroup;
 			children = (
 				E27A77781EEB40290083B00A /* images */,
-				E27A77771EEB40240083B00A /* json */,
 			);
 			name = config;
-			sourceTree = "<group>";
-		};
-		E27A77771EEB40240083B00A /* json */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = json;
 			sourceTree = "<group>";
 		};
 		E27A77781EEB40290083B00A /* images */ = {

@@ -120,7 +120,22 @@
         "identifier": "pss4",
         "elementFileName": "pss4"
       },
-      "resultTransforms": []
+      "resultTransforms": [
+        {
+          "identifier": "stressScore",
+          "transform": "PSSScore",
+          "inputMapping": [
+            {"parameter":"results", "stepIdentifierRegex":"pss4\\..*"}
+          ]
+        },
+        {
+          "identifier": "standard",
+          "transform": "PSSRaw",
+          "inputMapping": [
+            {"parameter":"results", "stepIdentifierRegex":"pss4\\..*"}
+          ]
+        }
+      ]
     },
     {
       "identifier": "PSS10",
@@ -129,7 +144,22 @@
         "identifier": "pss10",
         "elementFileName": "pss10"
       },
-      "resultTransforms": []
+      "resultTransforms": [
+        {
+          "identifier": "stressScore",
+          "transform": "PSSScore",
+          "inputMapping": [
+            {"parameter":"results", "stepIdentifierRegex":"pss10\\..*"}
+          ]
+        },
+        {
+          "identifier": "standard",
+          "transform": "PSSRaw",
+          "inputMapping": [
+            {"parameter":"results", "stepIdentifierRegex":"pss10\\..*"}
+          ]
+        }
+      ]
     },
     {
       "identifier": "StressSourceQuestionaire",
