@@ -101,6 +101,25 @@
           "inputMapping": [
             {"parameter":"results", "stepIdentifierRegex":"yadl_full\\..*"}
           ]
+        },
+        {
+          "identifier": "standard",
+          "transform": "YADLFullRaw",
+          "inputMapping": [
+            {
+              "parameter":"results",
+              "stepIdentifierRegex":"yadl_full\\..*"
+            },
+            {
+              "parameter": "schemaID",
+              "constant":
+              {
+                "namespace": "Cornell",
+                "name": "yadl-full-assessment-dance",
+                "version": "1.0"
+              }
+            }
+          ]
         }
       ]
     },
@@ -111,7 +130,27 @@
         "identifier": "YADLSpot",
         "elementFileName": "YADLSpot"
       },
-      "resultTransforms": []
+      "resultTransforms": [
+        {
+          "identifier": "standard",
+          "transform": "YADLSpotRaw",
+          "inputMapping": [
+            {
+              "parameter":"results",
+              "stepIdentifierRegex":"yadl_spot\\..*"
+            },
+            {
+              "parameter": "schemaID",
+              "constant":
+              {
+                "namespace": "Cornell",
+                "name": "yadl-spot-assessment-dance",
+                "version": "1.0"
+              }
+            }
+          ]
+        }
+      ]
     },
     {
       "identifier": "PSS4",

@@ -22,7 +22,7 @@
           },
           "onTap": [
             {
-              "type": "launchActivity",
+              "type": "queueActivity",
               "activityID": "baseline"
             }
           ]
@@ -41,7 +41,7 @@
           },
           "onTap": [
             {
-              "type": "launchActivity",
+              "type": "queueActivity",
               "activityID": "dailyStressAssessment"
             }
           ]
@@ -58,7 +58,7 @@
           "title": "Log Out",
           "onTap": [
             {
-              "type": "launchActivity",
+              "type": "queueActivity",
               "activityID": "baseline"
             }
           ]

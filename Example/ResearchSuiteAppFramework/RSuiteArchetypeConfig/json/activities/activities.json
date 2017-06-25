@@ -82,7 +82,7 @@
             "type": "setValueInState",
             "identifier": "baselineCompletionDate",
             "value": {
-              "type": "constant",
+              "type": "special",
               "keyword": "Now"
             }
           },
@@ -153,12 +153,12 @@
             "type": "setValueInState",
             "identifier": "lastDailySurveyCompletion",
             "value": {
-              "type": "constant",
+              "type": "special",
               "keyword": "Now"
             }
           },
           {
-            "type": "launchActivity",
+            "type": "queueActivity",
             "activityID": "sourceQuestionaireAndRelaxation",
             "predicate": {
               "format": "$pssScore > $pssThreshold",
@@ -180,7 +180,7 @@
         "onFailure": [],
         "finally": [
           {
-            "type": "launchActivity",
+            "type": "queueActivity",
             "activityID": "dailyVSR"
           }
         ]
