@@ -32,3 +32,4 @@ Carthage
 # `pod install` in .travis.yml
 #
 Example/Pods/
+Example/ResearchSuiteAppFramework/YADL.xcassets/base_of_support_1.imageset/base_of_support_1.png
