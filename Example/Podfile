@@ -1,19 +1,24 @@
 use_frameworks!
 
 target 'ResearchSuiteAppFramework_Example' do
+  pod 'ResearchSuiteAppFramework/Core', :path => '../'
+  # pod 'ResearchSuiteAppFramework/OldCore', :path => '../'
   pod 'ResearchSuiteAppFramework/Lab', :path => '../'
 
   pod "sdlrkx"
+  # pod "sdlrkx", :path => '~/Developer/ResearchSuite/iOS/sdl-rkx'
   pod "OhmageOMHSDK"
   pod "OhmageOMHSDK/RSTBSupport"
   pod "OhmageOMHSDK/RSRPSupport"
   pod "ResearchSuiteTaskBuilder"
   pod "ResearchSuiteResultsProcessor"
 
+  pod "ResearchSuiteExtensions", :git => 'https://github.com/ResearchSuite/ResearchSuiteExtensions-iOS.git', :tag => '0.6.0'
+
   # pod "OhmageOMHSDK", :path => '../../../../ohmage/RSuiteSDKs/OhmageOMHSDK'
   # pod "OhmageOMHSDK/RSTBSupport", :path => '../../../../ohmage/RSuiteSDKs/OhmageOMHSDK'
   # pod "OhmageOMHSDK/RSRPSupport",:path => '../../../../ohmage/RSuiteSDKs/OhmageOMHSDK'
-  # pod "ResearchSuiteTaskBuilder",:path => '../../ResearchSuiteTaskBuilder'
+  # pod "ResearchSuiteTaskBuilder",:path => '../../ResearchSuiteTaskBuilder-ios'
   # pod "sdlrkx", :path => '../../sdl-rkx'
   # pod "ResearchSuiteResultsProcessor", :path => '../../ResearchSuiteResultsProcessor'
 

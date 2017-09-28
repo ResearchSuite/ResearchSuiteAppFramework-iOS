@@ -14,6 +14,7 @@ import ReSwift
 import ResearchKit
 import ResearchSuiteResultsProcessor
 import sdlrkx
+import ResearchSuiteExtensions
 
 @UIApplicationMain
 final class AppDelegate: RSLApplicationDelegate {

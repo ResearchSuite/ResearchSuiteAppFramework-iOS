@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'ResearchSuiteAppFramework'
-  s.version          = '0.0.2'
+  s.version          = '0.0.3'
   s.summary          = 'The ResearchSuiteAppFramework is the easiest way to build mobile health research studies.'
 
 # This description is used to generate tags and improve search results.
