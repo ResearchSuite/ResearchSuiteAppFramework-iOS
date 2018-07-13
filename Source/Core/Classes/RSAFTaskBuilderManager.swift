@@ -71,6 +71,7 @@ open class RSAFTaskBuilderManager: NSObject {
         // Do any additional setup after loading the view, typically from a nib.
         self.rstb = RSTBTaskBuilder(
             stateHelper: stateHelper,
+            localizationHelper: nil,
             elementGeneratorServices: elementGeneratorServices,
             stepGeneratorServices: stepGeneratorServices,
             answerFormatGeneratorServices: answerFormatGeneratorServices)

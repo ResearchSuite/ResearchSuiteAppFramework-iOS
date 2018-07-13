@@ -33,11 +33,11 @@ NOTE: VERY EXPERIMENTAL!!
 
   s.subspec 'Core' do |core|
     core.source_files = 'Source/Core/**/*'
-    core.dependency 'ResearchKit', '~> 1.4'
+    core.dependency 'ResearchKit', '~> 1.5'
     core.dependency 'ReSwift', '~> 3.0'
-    core.dependency 'ResearchSuiteTaskBuilder', '~> 0.5'
-    core.dependency 'ResearchSuiteResultsProcessor', '~> 0.3'
-    core.dependency 'Gloss', '~> 1.2'
+    core.dependency 'ResearchSuiteTaskBuilder', '~> 0.10'
+    core.dependency 'ResearchSuiteResultsProcessor', '~> 0.9'
+    core.dependency 'Gloss', '~> 2.0'
   end
 
   s.subspec 'Lab' do |lab|
